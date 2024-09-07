@@ -2,6 +2,7 @@ export type Job = {
   id: number
   title: string;
   company: string;
+  location: string;
   date: string;
   description: string;
   categoryId: number;
@@ -11,8 +12,9 @@ export type Job = {
 const jobs: Job[] = [
   {
     id: 0,
-    title: "Fluglehrer in Tirol!",
+    title: "Fluglehrer in den Südalpen!",
     company: "Bluesky GmbH",
+    location: "Sillian",
     date: "07.09.2024",
     description: "Einzige Flugschule in Tirol sucht Fluglehrer:in für die Ausbildung von Gleitschirmpilot:innen. Einzige Flugschule in Tirol sucht Fluglehrer:in für die Ausbildung von Gleitschirmpilot:innen. Einzige Flugschule in Tirol sucht Fluglehrer:in für die Ausbildung von Gleitschirmpilot:innen.",
     categoryId: 0,
@@ -20,8 +22,9 @@ const jobs: Job[] = [
   },
   {
     id: 2,
-    title: "Werkstattmitarbeiter in Tirol!",
+    title: "Werkstattmitarbeiter in den Südalpen!",
     company: "Bluesky GmbH",
+    location: "Sillian",
     date: "07.09.2024",
     description: "Geil Schirme reparieren.",
     categoryId: 3,

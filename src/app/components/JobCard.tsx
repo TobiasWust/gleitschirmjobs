@@ -1,4 +1,5 @@
 'use client';
+import { HiOutlineStar } from "react-icons/hi2";
 import { useMemo, useState } from "react"
 import { Job } from "../data/jobs";
 import { getCategoryNameById } from "../data/categories";
@@ -15,7 +16,10 @@ export default function JobCard({ job }: { job: Job }) {
           <h2 className="card-title">{job.title}<span className="badge badge-xs badge-primary">{category}</span></h2>
           <div className="text-xs">{job.date}</div>
         </div>
-        <h3 className="font-semibold">{job.company}</h3>
+        <div className="flex gap-4">
+          <h3 className="font-semibold">{job.company}</h3>
+          <h4 className="text-primary">{job.location}</h4>
+        </div>
         <button className="text-left" type="button" onClick={() => setExpanded(!expanded)}>
           <div className={`${expanded ? "line-clamp-none max-h-40" : "line-clamp-2 max-h-14"} transition-[max-height] duration-500`}>{job.description}</div>
           {/* {expanded ? <span className="text-primary">Weniger anzeigen</span> : <span className="text-primary">Mehr anzeigen</span>} */}
@@ -27,7 +31,7 @@ export default function JobCard({ job }: { job: Job }) {
             }
           </div>
           <div className="card-actions">
-            <button className="btn">Merken</button>
+            <button className="btn"><HiOutlineStar />Merken</button>
             <button className="btn btn-primary">Bewerben</button>
           </div>
         </div>
