@@ -1,13 +1,21 @@
 'use client';
-import { HiOutlineStar } from "react-icons/hi2";
+import { HiOutlineStar, HiStar } from "react-icons/hi2";
 import { useMemo, useState } from "react"
 import { Job } from "../data/jobs";
 import { getCategoryNameById } from "../data/categories";
+import { useFav } from "../store/useFav";
 
 export default function JobCard({ job }: { job: Job }) {
   const [expanded, setExpanded] = useState(false);
 
+  const toggleFav = useFav((state) => state.toggleFav);
+  const favs = useFav((state) => state.favs);
+
   const category = useMemo(() => getCategoryNameById(job.categoryId), [job.categoryId]);
+
+  const handleFav = () => {
+    toggleFav(job.id);
+  }
 
   return (
     <div className="card bg-base-100 w-full shadow-xl">
@@ -31,7 +39,7 @@ export default function JobCard({ job }: { job: Job }) {
             }
           </div>
           <div className="card-actions">
-            <button className="btn"><HiOutlineStar />Merken</button>
+            <button className="btn" onClick={handleFav}>{favs.includes(job.id) ? <HiStar className="text-yellow-300" /> : <HiOutlineStar />}Merken</button>
             <button className="btn btn-primary">Bewerben</button>
           </div>
         </div>
