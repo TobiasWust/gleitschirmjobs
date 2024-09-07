@@ -4,11 +4,19 @@ import JobCard from "./JobCard";
 import jobs from "../data/jobs";
 import { useSearchParams } from 'next/navigation'
 import { getCategoryNameById } from "../data/categories";
-import { useMemo } from "react";
+import { useMemo, useState } from "react";
+
+const itemsPerPage = 10;
 
 export default function JobTable() {
   const searchParams = useSearchParams()
   const category = searchParams.get('category')
+
+  const [page, setPage] = useState(1);
+
+  const handlePage = (page: number) => {
+    setPage(page);
+  }
 
   const filteredJobs = useMemo(() =>
     jobs
@@ -30,13 +38,31 @@ export default function JobTable() {
       })
     , [category]);
 
+  const paginatedJobs = useMemo(() => {
+    const start = (page - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    return filteredJobs.slice(start, end);
+  }, [filteredJobs, page]);
+
+  const pageCount = Math.ceil(filteredJobs.length / itemsPerPage);
+
   return (
     <div className="flex gap-4 flex-col">
       {
-        filteredJobs.map((job) =>
+        paginatedJobs.map((job) =>
           <JobCard key={job.id} job={job} />
         )
       }
+      <div className="join">
+        <button className="join-item btn" disabled={page === 1} onClick={() => handlePage(page > 1 ? page - 1 : 1)}>&lt;</button>
+        {
+          Array.from({ length: pageCount }, (_, i) => i + 1).map((item) =>
+            <button key={item} className={`join-item btn ${item === page ? 'btn-active' : ''}`} onClick={() => handlePage(item)}>{item}</button>
+          )
+        }
+        <button className="join-item btn" disabled={page === pageCount} onClick={() => handlePage(page < pageCount ? page + 1 : pageCount)}>&gt;</button>
+        {/* <button className="join-item btn">4</button> */}
+      </div>
     </div>
   )
 }
