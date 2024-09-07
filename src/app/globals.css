@@ -7,6 +7,17 @@
   --foreground: #171717;
 }
 
+:root:has(
+    :is(
+        .modal-open,
+        .modal:target,
+        .modal-toggle:checked + .modal,
+        .modal[open]
+      )
+  ) {
+  scrollbar-gutter: unset;
+}
+
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;

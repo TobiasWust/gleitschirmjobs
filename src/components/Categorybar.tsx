@@ -5,7 +5,7 @@ import categories from "../data/categories";
 import { usePathname, useSearchParams } from "next/navigation";
 import Link from "next/link";
 
-export const dynamic = 'force-dynamic'
+// export const dynamic = 'force-dynamic'
 
 export default function CategoryBar() {
   const pathname = usePathname()
