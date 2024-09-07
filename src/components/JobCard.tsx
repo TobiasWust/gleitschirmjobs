@@ -32,10 +32,10 @@ export default function JobCard({ job }: { job: Job }) {
           <div className="text-xs">{job.date}</div>
         </div>
         <div className="flex gap-4">
-          <h3 className='font-semibold'>{
+          <h3 className="font-semibold text-primary">{
             job.companyUrl ? <a className="link" href={job.companyUrl} target="_blank" rel="noreferrer">{job.company}</a> : job.company
           }</h3>
-          <h4 className="text-primary">{job.location}</h4>
+          <span className="text-slate-400">{job.location}</span>
         </div>
         {/* <button className="text-left" type="button" onClick={() => setExpanded(!expanded)}> */}
         {/* <div className={`${expanded ? "line-clamp-none max-h-40" : "line-clamp-2 max-h-14"} transition-[max-height] duration-500`}> */}
@@ -44,12 +44,13 @@ export default function JobCard({ job }: { job: Job }) {
         </div>
         {/* {expanded ? <span className="text-primary">Weniger anzeigen</span> : <span className="text-primary">Mehr anzeigen</span>} */}
         {/* </button> */}
+        {job.jobUrl &&
+          <a className="text-primary flex items-center gap-1" href={job.jobUrl} target="_blank" rel="noreferrer">Ausschreibung auf externer Seite <HiOutlineArrowTopRightOnSquare /></a>}
         <div className="card-actions justify-between items-center">
           <div className="card-actions">
             {
               job.employmentType.map((type) => <div className="badge badge-outline" key={type}>{type}</div>)
             }
-            <a className="text-primary flex items-center gap-1" href={job.jobUrl} target="_blank" rel="noreferrer">Ausschreibung auf externer Seite <HiOutlineArrowTopRightOnSquare /></a>
           </div>
           <div className="card-actions">
             <button className="btn" onClick={handleFav}>{favs.includes(job.id) ? <HiStar className="text-yellow-300" /> : <HiOutlineStar />}Merken</button>

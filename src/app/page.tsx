@@ -1,6 +1,7 @@
 'use client';
 
 import CategoryBar from "../components/Categorybar";
+import Footer from "../components/Footer";
 import JobModal from "../components/JobModal";
 import JobTable from "../components/JobTable";
 import jobs from "../data/jobs";
@@ -11,11 +12,14 @@ export default function Home() {
   const job = jobs.find(j => j.id === jobId);
 
   return (
-    <main className="md:container md:mx-auto">
+    <main>
       <h1>Gleitschirm Jobbörse</h1>
-      <CategoryBar />
-      <JobTable />
+      <div className="md:container md:mx-auto">
+        <CategoryBar />
+        <JobTable />
+      </div>
       {job && <JobModal job={job} />}
+      <Footer />
     </main>
   );
 }

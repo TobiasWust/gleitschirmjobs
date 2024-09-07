@@ -22,7 +22,6 @@ const jobs: Job[] = [
     location: "Sillian",
     date: "07.09.2024",
     description: "Einzige Flugschule in Tirol sucht Fluglehrer:in für die Ausbildung von Gleitschirmpilot:innen. Einzige Flugschule in Tirol sucht Fluglehrer:in für die Ausbildung von Gleitschirmpilot:innen. Einzige Flugschule in Tirol sucht Fluglehrer:in für die Ausbildung von Gleitschirmpilot:innen.",
-    jobUrl: "https://www.bluesky.at/jobs",
     categoryId: 0,
     employmentType: ["Vollzeit", "Teilzeit", "Freelance"],
     listingType: 'search',
