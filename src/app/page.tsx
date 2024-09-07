@@ -1,5 +1,5 @@
-import CategoryBar from "./components/Categorybar";
-import JobTable from "./components/JobTable";
+import CategoryBar from "../components/Categorybar";
+import JobTable from "../components/JobTable";
 
 export default function Home() {
   return (
