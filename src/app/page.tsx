@@ -7,7 +7,9 @@ export default function Home() {
   return (
     <main>
       <SearchBar />
-      <JobTable />
+      <Suspense>
+        <JobTable />
+      </Suspense>
       {/* {job && <JobModal job={job} />} */}
     </main>
   );

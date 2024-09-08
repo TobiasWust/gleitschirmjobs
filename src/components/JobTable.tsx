@@ -4,7 +4,7 @@ import JobCard from "./JobCard";
 import jobs from "../data/jobs";
 import { useSearchParams } from 'next/navigation'
 import { getCategoryNameById } from "../data/categories";
-import { Suspense, useMemo, useState } from "react";
+import { useMemo, useState } from "react";
 import { useSearchFilter } from "../store/useSearchFilter";
 import { useFav } from "../store/useFav";
 
@@ -79,29 +79,27 @@ export default function JobTable() {
   const pageCount = Math.ceil(filteredJobs.length / itemsPerPage);
 
   return (
-    <Suspense>
-      <div>
-        <p className="text-neutral-content mb-4">
-          {filteredJobs.length} Jobs gefunden
-        </p>
-        <div className="flex gap-4 flex-col">
+    <div>
+      <p className="text-neutral-content mb-4">
+        {filteredJobs.length} Jobs gefunden
+      </p>
+      <div className="flex gap-4 flex-col">
+        {
+          paginatedJobs.map((job) =>
+            <JobCard key={job.id} job={job} />
+          )
+        }
+        <div className="join">
+          <button className="join-item btn" disabled={page === 1} onClick={() => handlePage(page > 1 ? page - 1 : 1)}>&lt;</button>
           {
-            paginatedJobs.map((job) =>
-              <JobCard key={job.id} job={job} />
+            Array.from({ length: pageCount }, (_, i) => i + 1).map((item) =>
+              <button key={item} className={`join-item btn ${item === page ? 'btn-active' : ''}`} onClick={() => handlePage(item)}>{item}</button>
             )
           }
-          <div className="join">
-            <button className="join-item btn" disabled={page === 1} onClick={() => handlePage(page > 1 ? page - 1 : 1)}>&lt;</button>
-            {
-              Array.from({ length: pageCount }, (_, i) => i + 1).map((item) =>
-                <button key={item} className={`join-item btn ${item === page ? 'btn-active' : ''}`} onClick={() => handlePage(item)}>{item}</button>
-              )
-            }
-            <button className="join-item btn" disabled={page === pageCount} onClick={() => handlePage(page < pageCount ? page + 1 : pageCount)}>&gt;</button>
-            {/* <button className="join-item btn">4</button> */}
-          </div>
+          <button className="join-item btn" disabled={page === pageCount} onClick={() => handlePage(page < pageCount ? page + 1 : pageCount)}>&gt;</button>
+          {/* <button className="join-item btn">4</button> */}
         </div>
       </div>
-    </Suspense>
+    </div>
   )
 }
