@@ -37,7 +37,7 @@ export default function RootLayout({
         <Suspense>
           <CategoryBar />
         </Suspense>
-        <div className="md:container md:mx-auto p-4 md:p-0 grid md:grid-cols-4 gap-4">
+        <div className="max-w-screen-xl md:mx-auto p-4 md:p-0 grid md:grid-cols-4 gap-4">
           <div className="col-span-3">
             {children}
           </div>

@@ -24,7 +24,7 @@ export default function JobCard({ job }: { job: Job }) {
         <div className={`card card-compact bg-base-100 w-full shadow-md ${job.highlight ? 'border-solid border-2 border-yellow-300' : ''} hover:shadow-secondary transition-shadow`}>
           <div className="card-body">
             <div className="flex justify-between">
-              <h2 className="card-title">
+              <h2 className="card-title flex-wrap">
                 {job.listingType === 'search' ?
                   <HiBuildingOffice /> :
                   <HiUser />
