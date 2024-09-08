@@ -11,7 +11,6 @@ export default function Home() {
       <Suspense>
         <JobTable />
       </Suspense>
-      {/* {job && <JobModal job={job} />} */}
     </main>
   );
 }

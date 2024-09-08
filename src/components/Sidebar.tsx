@@ -8,7 +8,7 @@ export default function Sidebar() {
         <HiOutlineCheckBadge className="text-success" />Kostenlos
         <HiOutlineCheckBadge className="text-success" />Ohne Anmeldung
       </div>
-      <div className="skeleton aspect-square grid place-content-center">
+      <div className="skeleton aspect-square grid place-content-center p-4">
         Hier könnte Ihre Werbung stehen
         <Link className="btn btn-primary btn-sm" href="/contact">Werbung schalten</Link>
       </div>

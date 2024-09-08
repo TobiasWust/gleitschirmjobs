@@ -48,7 +48,9 @@ export default function JobCard({ job }: { job: Job }) {
                 }
               </div>
               <div className="card-actions">
-                <button className="btn" onClick={handleFav}>{favs.includes(job.id) ? <HiStar className="text-yellow-300" /> : <HiOutlineStar />}Merken</button>
+                <div className="tooltip tooltip-bottom" data-tip="Wird auf deinem Gerät gespeichert.">
+                  <button className="btn" onClick={handleFav}>{favs.includes(job.id) ? <HiStar className="text-yellow-300" /> : <HiOutlineStar />}Merken</button>
+                </div>
               </div>
             </div>
           </div>

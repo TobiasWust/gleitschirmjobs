@@ -65,7 +65,7 @@ export default function CategoryBar() {
 
         <ul className="menu menu-sm menu-horizontal bg-base-300 rounded">
           <li>
-            <div className={`tooltip tooltip-bottom ${!activeListingType && activePathname === pathname ? 'active' : ''}`} >
+            <div className={`tooltip tooltip-bottom ${!activeListingType && activePathname === pathname ? 'active' : ''}`}>
               <Link href={pathname + '?' + removeQueryString('listingType')}
               >Alle</Link>
             </div>

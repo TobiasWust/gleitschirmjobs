@@ -40,7 +40,7 @@ export default function Job({ params: { id } }: { params: { id: string } }) {
           }</h3>
           <h4 className="text-primary">{job.location}</h4>
         </div>
-        <div>
+        <div className="whitespace-break-spaces">
           {job.description}
         </div>
         <div className="flex justify-between items-center">
@@ -51,7 +51,7 @@ export default function Job({ params: { id } }: { params: { id: string } }) {
           </div>
           {job.jobUrl && <a className="text-primary flex items-center gap-1" href={job.jobUrl} target="_blank" rel="noreferrer">Ausschreibung auf externer Seite <HiOutlineArrowTopRightOnSquare /></a>}
         </div>
-        <form className="w-1/2 m-auto" onSubmit={handleSubmit}>
+        <form className="md:w-1/2 m-auto" onSubmit={handleSubmit}>
           <label className="form-control w-full">
             <div className="label">
               <span className="label-text">Name</span>
