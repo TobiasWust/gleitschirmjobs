@@ -21,7 +21,7 @@ export default function JobCard({ job }: { job: Job }) {
   return (
     <article>
       <Link href={`/job/${job.id}`}>
-        <div className={`card card-compact bg-base-100 w-full shadow-xl ${job.highlight ? 'border-solid border-2 border-yellow-300' : ''} `}>
+        <div className={`card card-compact bg-base-100 w-full shadow-md ${job.highlight ? 'border-solid border-2 border-yellow-300' : ''} hover:shadow-secondary transition-shadow`}>
           <div className="card-body">
             <div className="flex justify-between">
               <h2 className="card-title">{job.title}<span className="badge badge-xs badge-primary">{category}</span></h2>
