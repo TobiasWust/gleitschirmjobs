@@ -43,7 +43,7 @@ export default function CategoryBar() {
   )
   return (
     <div className="navbar sticky top-0 bg-base-100 z-10">
-      <div className="md:container md:mx-auto p-4 md:p-0 flex justify-between flex-wrap">
+      <div className="md:container md:mx-auto p-4 md:p-0 flex gap-4 flex-wrap">
         <ul className="menu menu-sm menu-horizontal bg-base-300 rounded">
           <li>
             <div className={`tooltip tooltip-bottom ${!activeCategory && activePathname === pathname ? 'active' : ''}`} >
@@ -84,8 +84,8 @@ export default function CategoryBar() {
           </li>
         </ul>
 
-        <ul className="menu menu-sm menu-horizontal">
-          <li className="ps-4">
+        <ul className="menu menu-sm menu-horizontal bg-base-300 rounded">
+          <li>
             <button onClick={toggleOnlyFavs}>
               {onlyFavs ?
                 <HiStar className="text-yellow-300" /> :
@@ -94,7 +94,9 @@ export default function CategoryBar() {
           </li>
         </ul>
 
-        <Link href="/inserat" className="btn btn-primary ">Kostenlos inserieren</Link>
+        <div className="flex-1 text-right">
+          <Link href="/inserat" className="btn btn-primary ">Kostenlos inserieren</Link>
+        </div>
       </div>
     </div>
   );
