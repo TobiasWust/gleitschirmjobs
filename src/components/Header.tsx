@@ -10,7 +10,7 @@ export default function Header() {
         <div className="max-w-md">
           <h1 className="mb-5 text-5xl font-bold">Gleitschirmjobs.de</h1>
           <p className="mb-5">
-            Die erste Jobbörse speziell für Gleitschirmflieger.
+            Die erste Jobbörse für Gleitschirmflieger.
           </p>
         </div>
       </div>
