@@ -1,15 +1,17 @@
 'use client';
 
-import { HiOutlineArrowTopRightOnSquare } from "react-icons/hi2";
+import { HiBuildingOffice, HiOutlineArrowTopRightOnSquare, HiUser } from "react-icons/hi2";
 import jobs from "../../../data/jobs";
+import { useMemo } from "react";
+import { getCategoryNameById } from "../../../data/categories";
 
 export default function Job({ params: { id } }: { params: { id: string } }) {
   const job = jobs.find((j) => j.id === Number(id));
+  const category = useMemo(() => job ? getCategoryNameById(job.categoryId) : null, [job]);
 
   if (!job) {
     return <div>Job {id} not found</div>
   }
-  // const category = useMemo(() => getCategoryNameById(job.categoryId), [job.categoryId]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     // e.preventDefault();
@@ -21,11 +23,16 @@ export default function Job({ params: { id } }: { params: { id: string } }) {
   }
 
   return (
-    <main>
-      <div className="modal-box card-body">
+    <main className="py-4">
+      <div className="bg-base-200 rounded-2xl p-4 grid gap-4">
         <div className="flex justify-between">
-          {/* <h2 className="card-title">{job.title}<span className="badge badge-xs badge-primary">{category}</span></h2> */}
-          <div className="text-xs">{job.date}</div>
+          <h2 className="card-title">
+            {job.listingType === 'offer' ?
+              <HiBuildingOffice /> :
+              <HiUser />
+            }
+            {job.title}<span className="badge badge-xs badge-primary">{category}</span></h2>
+          <div>{job.date}</div>
         </div>
         <div className="flex gap-4">
           <h3 className='font-semibold'>{
@@ -36,15 +43,15 @@ export default function Job({ params: { id } }: { params: { id: string } }) {
         <div>
           {job.description}
         </div>
-        <div className="card-actions justify-between items-center">
-          <div className="card-actions">
+        <div className="flex justify-between items-center">
+          <div className="flex gap-4">
             {
               job.employmentType && job.employmentType.map((type) => <div className="badge badge-outline" key={type}>{type}</div>)
             }
-            <a className="text-primary flex items-center gap-1" href={job.jobUrl} target="_blank" rel="noreferrer">Ausschreibung auf externer Seite <HiOutlineArrowTopRightOnSquare /></a>
           </div>
+          {job.jobUrl && <a className="text-primary flex items-center gap-1" href={job.jobUrl} target="_blank" rel="noreferrer">Ausschreibung auf externer Seite <HiOutlineArrowTopRightOnSquare /></a>}
         </div>
-        <form method="dialog" onSubmit={handleSubmit}>
+        <form className="w-1/2 m-auto" onSubmit={handleSubmit}>
           <label className="form-control w-full">
             <div className="label">
               <span className="label-text">Name</span>
@@ -63,17 +70,14 @@ export default function Job({ params: { id } }: { params: { id: string } }) {
             </div>
             <textarea className="textarea textarea-bordered h-24" name="message" required placeholder="Nachricht"></textarea>
           </label>
-          <div className="modal-action">
+          <div className="flex justify-end items-center gap-4 pt-4">
             <p className="text-sm">
               Diese Bewerbung wird direkt an {job.company} weitergeleitet.
             </p>
             <button type="submit" className="btn btn-primary">Bewerben</button>
           </div>
         </form>
-      </div >
-      <form method="dialog" className="modal-backdrop">
-        <button>close</button>
-      </form>
-    </main >
+      </div>
+    </main>
   )
 }

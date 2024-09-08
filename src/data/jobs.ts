@@ -35,6 +35,7 @@ const jobs: Job[] = [
     location: "Egal",
     date: "07.09.2024",
     description: "Ich kann alles.",
+    jobUrl: "https://wust.dev",
     categoryId: 0,
     employmentType: ["Freelance"],
     listingType: 'offer',
@@ -61,7 +62,7 @@ const jobs: Job[] = [
     location: "Aschau",
     date: "08.09.2024",
     description: "Hallo. Flieg mit mir.",
-    categoryId: 4,
+    categoryId: 1,
     listingType: 'offer',
     highlight: false
   },
@@ -83,10 +84,66 @@ const jobs: Job[] = [
     location: "München",
     date: "08.09.2024",
     description: "Wir brauchen jemanden, der uns hilft.",
-    categoryId: 0,
+    categoryId: 2,
     listingType: 'search',
     highlight: false
   },
+  {
+    id: 6,
+    title: "Shuttlefahrer",
+    company: "Taxischule",
+    location: "München",
+    date: "08.09.2024",
+    description: "Wir suchen jemanden, der 30 mal am Tag den Ber rauf iund runter fährt.",
+    categoryId: 4,
+    listingType: 'search',
+    highlight: false
+  },
+  {
+    id: 7,
+    title: "Unerfahrener Fluglehrer!",
+    company: "Norbert Noob",
+    location: "Rostock",
+    date: "08.09.2024",
+    description: "Ich kann selbst noch nicht fliegen, aber ich kann es dir beibringen.",
+    categoryId: 0,
+    listingType: 'offer',
+    highlight: false
+  },
+  {
+    id: 8,
+    title: "Suchen Tandempiloten für Gardasee",
+    company: "Geheime Garda Garde",
+    location: "Malcesine",
+    date: "08.09.2024",
+    description: "Es gibt noch nicht genug Tandempiloten am Gardasee. Wir suchen dich.",
+    categoryId: 1,
+    listingType: 'search',
+    highlight: false
+  },
+  {
+    id: 9,
+    title: "Schweißerarbeiten",
+    company: "Schweißerei",
+    location: "Allgäu",
+    date: "08.09.2024",
+    description: "Ich repariere deine Flugausrüstung.",
+    categoryId: 3,
+    listingType: 'offer',
+    highlight: false
+  },
+  {
+    id: 10,
+    title: "Buchhalter",
+    company: "Schlauwi Schlumpf",
+    location: "Allgäu",
+    date: "08.09.2024",
+    description: "Meine Fähigkeiten: Mathe, Steuern, Doppelte Buchführung und alles andere was keiner mag.",
+    categoryId: 2,
+    listingType: 'offer',
+    highlight: false
+  },
+
 ]
 
 export default jobs;
