@@ -1,5 +1,5 @@
 'use client';
-import { HiOutlineStar, HiStar } from "react-icons/hi2";
+import { HiBuildingOffice, HiOutlineStar, HiStar, HiUser } from "react-icons/hi2";
 import { useMemo } from "react"
 import { Job } from "../data/jobs";
 import { getCategoryNameById } from "../data/categories";
@@ -24,7 +24,12 @@ export default function JobCard({ job }: { job: Job }) {
         <div className={`card card-compact bg-base-100 w-full shadow-md ${job.highlight ? 'border-solid border-2 border-yellow-300' : ''} hover:shadow-secondary transition-shadow`}>
           <div className="card-body">
             <div className="flex justify-between">
-              <h2 className="card-title">{job.title}<span className="badge badge-xs badge-primary">{category}</span></h2>
+              <h2 className="card-title">
+                {job.listingType === 'offer' ?
+                  <HiBuildingOffice /> :
+                  <HiUser />
+                }
+                {job.title}<span className="badge badge-xs badge-primary">{category}</span></h2>
               <div className="text-xs">{job.date}</div>
             </div>
             <div className="flex gap-4">

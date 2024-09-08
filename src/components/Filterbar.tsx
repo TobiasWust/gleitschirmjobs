@@ -4,7 +4,7 @@ import { useCallback } from "react";
 import categories from "../data/categories";
 import { usePathname, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { HiOutlineStar, HiStar } from "react-icons/hi2";
+import { HiBuildingOffice, HiOutlineStar, HiStar, HiUser } from "react-icons/hi2";
 import { useFav } from "../store/useFav";
 import { useSearchFilter } from "../store/useSearchFilter";
 
@@ -73,13 +73,13 @@ export default function CategoryBar() {
           <li>
             <div className={`tooltip tooltip-bottom ${isActiveListingType('offer') ? 'active' : ''}`}>
               <Link href={pathname + '?' + createQueryString('listingType', 'offer')}
-              >Arbeitgebende</Link>
+              ><HiBuildingOffice className="inline-block" /> Arbeitgebende</Link>
             </div>
           </li>
           <li>
             <div className={`tooltip tooltip-bottom ${isActiveListingType('search') ? 'active' : ''}`}>
               <Link href={pathname + '?' + createQueryString('listingType', 'search')}
-              >Arbeitende</Link>
+              ><HiUser className="inline-block" /> Arbeitende</Link>
             </div>
           </li>
         </ul>
