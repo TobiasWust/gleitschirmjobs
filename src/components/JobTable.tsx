@@ -13,6 +13,7 @@ const itemsPerPage = 10;
 export default function JobTable() {
   const searchParams = useSearchParams()
   const category = searchParams.get('category')
+  const listingType = searchParams.get('listingType')
 
   const favs = useFav((state) => state.favs);
   const searchText = useSearchFilter((state) => state.searchText);
@@ -30,6 +31,13 @@ export default function JobTable() {
       .filter((job) => {
         if (onlyFavs) {
           return favs.includes(job.id)
+        }
+        return true
+      })
+      // listing type filter
+      .filter((job) => {
+        if (listingType) {
+          return job.listingType === listingType
         }
         return true
       })
@@ -60,7 +68,7 @@ export default function JobTable() {
         }
         return 0;
       })
-    , [category, searchText, onlyFavs, favs]);
+    , [category, searchText, onlyFavs, favs, listingType]);
 
   const paginatedJobs = useMemo(() => {
     const start = (page - 1) * itemsPerPage;

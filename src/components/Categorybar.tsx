@@ -18,7 +18,9 @@ export default function CategoryBar() {
 
 
   const activeCategory = searchParams.get('category')
-  const isActive = (category: string) => category === activeCategory;
+  const activeListingType = searchParams.get('listingType')
+  const isActiveCategory = (category: string) => category === activeCategory;
+  const isActiveListingType = (listingType: string) => listingType === activeListingType;
 
   const createQueryString = useCallback(
     (name: string, value: string) => {
@@ -40,35 +42,60 @@ export default function CategoryBar() {
     [searchParams]
   )
   return (
-    <div className="navbar sticky flex justify-between flex-wrap top-0 bg-base-200 z-10">
-      <ul className="menu menu-sm menu-horizontal px-1">
-        <li>
-          <div className={`tooltip tooltip-bottom ${!activeCategory && activePathname === pathname ? 'active' : ''}`} >
-            <Link href={pathname + '?' + removeQueryString('category')}
-            >Alle</Link>
-          </div>
-        </li>
-        {categories.map((category) => (
-          <li key={category.id}>
-            <div className={`tooltip tooltip-bottom ${isActive(category.name) ? 'active' : ''}`} data-tip={category.description}>
-              <Link href={
-                pathname + '?' + createQueryString('category', category.name)
-              }
-              >{category.name}</Link>
+    <div className="navbar sticky top-0 bg-base-100 z-10">
+      <div className="md:container md:mx-auto p-4 md:p-0 flex justify-between flex-wrap">
+        <ul className="menu menu-sm menu-horizontal bg-base-300 rounded">
+          <li>
+            <div className={`tooltip tooltip-bottom ${!activeCategory && activePathname === pathname ? 'active' : ''}`} >
+              <Link href={pathname + '?' + removeQueryString('category')}
+              >Alle</Link>
             </div>
           </li>
-        ))}
+          {categories.map((category) => (
+            <li key={category.id}>
+              <div className={`tooltip tooltip-bottom ${isActiveCategory(category.name) ? 'active' : ''}`} data-tip={category.description}>
+                <Link href={
+                  pathname + '?' + createQueryString('category', category.name)
+                }
+                >{category.name}</Link>
+              </div>
+            </li>
+          ))}
+        </ul>
 
-        <li className="ps-4">
-          <button onClick={toggleOnlyFavs}>
-            {onlyFavs ?
-              <HiStar className="text-yellow-300" /> :
-              <HiOutlineStar />
-            } Nur Germerkte ({favs.length})</button>
-        </li>
-      </ul>
+        <ul className="menu menu-sm menu-horizontal bg-base-300 rounded">
+          <li>
+            <div className={`tooltip tooltip-bottom ${!activeListingType && activePathname === pathname ? 'active' : ''}`} >
+              <Link href={pathname + '?' + removeQueryString('listingType')}
+              >Alle</Link>
+            </div>
+          </li>
+          <li>
+            <div className={`tooltip tooltip-bottom ${isActiveListingType('offer') ? 'active' : ''}`}>
+              <Link href={pathname + '?' + createQueryString('listingType', 'offer')}
+              >Arbeitgebende</Link>
+            </div>
+          </li>
+          <li>
+            <div className={`tooltip tooltip-bottom ${isActiveListingType('search') ? 'active' : ''}`}>
+              <Link href={pathname + '?' + createQueryString('listingType', 'search')}
+              >Arbeitende</Link>
+            </div>
+          </li>
+        </ul>
 
-      <Link href="/inserat" className="btn btn-primary ">Kostenlos inserieren</Link>
+        <ul className="menu menu-sm menu-horizontal">
+          <li className="ps-4">
+            <button onClick={toggleOnlyFavs}>
+              {onlyFavs ?
+                <HiStar className="text-yellow-300" /> :
+                <HiOutlineStar />
+              } Nur Germerkte ({favs.length})</button>
+          </li>
+        </ul>
+
+        <Link href="/inserat" className="btn btn-primary ">Kostenlos inserieren</Link>
+      </div>
     </div>
   );
 }

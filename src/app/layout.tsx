@@ -33,7 +33,7 @@ export default function RootLayout({
       >
         {/* <Header /> */}
         <CategoryBar />
-        <div className="md:container md:mx-auto p-4 grid md:grid-cols-4 gap-4">
+        <div className="md:container md:mx-auto p-4 md:p-0 grid md:grid-cols-4 gap-4">
           <div className="col-span-3">
             {children}
           </div>

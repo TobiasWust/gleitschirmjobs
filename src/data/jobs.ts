@@ -8,7 +8,7 @@ export type Job = {
   description: string;
   jobUrl?: string;
   categoryId: number;
-  employmentType: ('Vollzeit' | 'Teilzeit' | 'Freelance')[]
+  employmentType?: ('Vollzeit' | 'Teilzeit' | 'Freelance')[]
   listingType: 'offer' | 'search';
   highlight: boolean;
 };
@@ -17,8 +17,8 @@ const jobs: Job[] = [
   {
     id: 0,
     title: "Fluglehrer in den Südalpen!",
-    company: "Bluesky GmbH",
-    companyUrl: "https://www.bluesky.at",
+    company: "flugschule GmbH",
+    companyUrl: "https://www.flugschule.at",
     location: "Sillian",
     date: "07.09.2024",
     description: "Einzige Flugschule in Tirol sucht Fluglehrer:in für die Ausbildung von Gleitschirmpilot:innen. Einzige Flugschule in Tirol sucht Fluglehrer:in für die Ausbildung von Gleitschirmpilot:innen. Einzige Flugschule in Tirol sucht Fluglehrer:in für die Ausbildung von Gleitschirmpilot:innen.",
@@ -43,17 +43,28 @@ const jobs: Job[] = [
   {
     id: 2,
     title: "Werkstattmitarbeiter in den Südalpen!",
-    company: "Bluesky GmbH",
-    companyUrl: "https://www.bluesky.at",
+    company: "Ganz unbekannter Checkbetrieb GmbH",
+    companyUrl: "https://www.flugschule.at",
     location: "Sillian",
     date: "07.09.2024",
     description: "Geil Schirme reparieren.",
-    jobUrl: "https://www.bluesky.at/jobs",
+    jobUrl: "https://www.flugschule.at/jobs",
     categoryId: 3,
     employmentType: ["Vollzeit", "Teilzeit", "Freelance"],
     listingType: 'search',
     highlight: false
-  }
+  },
+  {
+    id: 3,
+    title: "Tandempilot aus Aschau",
+    company: "Peter Pilot",
+    location: "Aschau",
+    date: "08.09.2024",
+    description: "Hallo. Flieg mit mir.",
+    categoryId: 4,
+    listingType: 'offer',
+    highlight: false
+  },
 ]
 
 export default jobs;
