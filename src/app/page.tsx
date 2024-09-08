@@ -1,5 +1,6 @@
 'use client';
 
+import { Suspense } from "react";
 import JobTable from "../components/JobTable";
 import SearchBar from "../components/Searchbar";
 
