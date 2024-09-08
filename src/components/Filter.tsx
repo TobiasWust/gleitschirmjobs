@@ -45,14 +45,14 @@ export default function Filter({ mobileView = false }: Readonly<{ mobileView?: b
     <div className={`${mobileView ? 'flex flex-row md:hidden' : 'md:flex hidden'} gap-4 flex-wrap`}>
       <ul className="menu menu-sm w-full md:w-auto md:menu-horizontal bg-base-300 rounded">
         <li>
-          <div className={`tooltip tooltip-bottom ${!activeCategory && activePathname === pathname ? 'active' : ''}`} >
+          <div className={`tooltip tooltip-right md:tooltip-bottom ${!activeCategory && activePathname === pathname ? 'active' : ''}`} >
             <Link href={pathname + '?' + removeQueryString('category')}
             >Alle</Link>
           </div>
         </li>
         {categories.map((category) => (
           <li key={category.id}>
-            <div className={`tooltip tooltip-bottom ${isActiveCategory(category.name) ? 'active' : ''}`} data-tip={category.description}>
+            <div className={`tooltip tooltip-right md:tooltip-bottom ${isActiveCategory(category.name) ? 'active' : ''}`} data-tip={category.description}>
               <Link href={
                 pathname + '?' + createQueryString('category', category.name)
               }

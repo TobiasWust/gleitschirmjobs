@@ -36,11 +36,11 @@ export default function RootLayout({
         <MobileFilter>
           <Header />
           <Filterbar />
-          <div className="max-w-screen-xl md:mx-auto p-4 md:p-0 grid md:grid-cols-4 gap-4">
+          <div className="max-w-screen-xl lg:mx-auto p-4 lg:p-0 grid lg:grid-cols-4 gap-4">
             <div className="col-span-3">
               {children}
             </div>
-            <div className="col-span-3 md:col-span-1">
+            <div className="col-span-3 lg:col-span-1">
               <Sidebar />
             </div>
           </div>

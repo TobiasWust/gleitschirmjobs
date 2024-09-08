@@ -20,7 +20,7 @@ export default function Footer() {
       </footer>
       <footer className="bg-neutral text-neutral-content p-4 text-center">
         <p>
-          Copyright © 2024 - Made with <GiHearts className="inline-block" /> by <a className="link" rel="noopener noreferrer" target="_blank" href="https://www.wust.dev">Wust</a>
+          Copyright © 2024 - Made with <GiHearts className="inline-block text-wuorange" /> by <a className="link" rel="noopener noreferrer" target="_blank" href="https://www.wust.dev">Wust</a>
         </p>
       </footer>
     </>

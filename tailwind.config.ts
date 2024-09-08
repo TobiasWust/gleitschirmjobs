@@ -12,6 +12,7 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        wuorange: "#f68714",
         background: "var(--background)",
         foreground: "var(--foreground)",
       },
@@ -26,12 +27,9 @@ const config: Config = {
       {
         mytheme: {
           ...dark,
-          "primary": "#4CCD99",
+          "primary": "#48eddd",
           "secondary": "#007F73",
           "accent": "#FFC700",
-          // "neutral": "#4CCD99",
-          // "base-100": "#233423",
-          // 007F73
         },
       },
     ],

@@ -10,7 +10,7 @@ export default function MobileFilter({ children }: Readonly<{ children: React.Re
       </div>
       <div className="drawer-side z-20">
         <label htmlFor="mobileNav" aria-label="close sidebar" className="drawer-overlay"></label>
-        <div className="menu bg-base-200 text-base-content min-h-full w-1/3 p-4">
+        <div className="menu bg-base-200 text-base-content min-h-full w-1/2 p-4">
           <Suspense>
             <Filter mobileView />
           </Suspense>
