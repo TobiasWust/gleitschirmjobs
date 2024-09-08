@@ -4,14 +4,18 @@ import { useCallback } from "react";
 import categories from "../data/categories";
 import { usePathname, useSearchParams } from "next/navigation";
 import Link from "next/link";
-import { HiStar } from "react-icons/hi2";
+import { HiOutlineStar, HiStar } from "react-icons/hi2";
 import { useFav } from "../store/useFav";
+import { useSearchFilter } from "../store/useSearchFilter";
 
 export default function CategoryBar() {
   const pathname = '/';
   const activePathname = usePathname()
   const searchParams = useSearchParams()
   const favs = useFav((state) => state.favs);
+  const toggleOnlyFavs = useSearchFilter((state) => state.toggleOnlyFavs);
+  const onlyFavs = useSearchFilter((state) => state.onlyFavs);
+
 
   const activeCategory = searchParams.get('category')
   const isActive = (category: string) => category === activeCategory;
@@ -56,7 +60,11 @@ export default function CategoryBar() {
         ))}
 
         <li className="ps-4">
-          <button><HiStar className="text-yellow-300" /> Nur Germerkte ({favs.length})</button>
+          <button onClick={toggleOnlyFavs}>
+            {onlyFavs ?
+              <HiStar className="text-yellow-300" /> :
+              <HiOutlineStar />
+            } Nur Germerkte ({favs.length})</button>
         </li>
       </ul>
 

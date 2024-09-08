@@ -6,6 +6,7 @@ import { useSearchParams } from 'next/navigation'
 import { getCategoryNameById } from "../data/categories";
 import { useMemo, useState } from "react";
 import { useSearchFilter } from "../store/useSearchFilter";
+import { useFav } from "../store/useFav";
 
 const itemsPerPage = 10;
 
@@ -13,7 +14,9 @@ export default function JobTable() {
   const searchParams = useSearchParams()
   const category = searchParams.get('category')
 
+  const favs = useFav((state) => state.favs);
   const searchText = useSearchFilter((state) => state.searchText);
+  const onlyFavs = useSearchFilter((state) => state.onlyFavs);
 
   const [page, setPage] = useState(1);
 
@@ -23,6 +26,13 @@ export default function JobTable() {
 
   const filteredJobs = useMemo(() =>
     jobs
+      // onlyFavs filter
+      .filter((job) => {
+        if (onlyFavs) {
+          return favs.includes(job.id)
+        }
+        return true
+      })
       // category filter
       .filter((job) => {
         if (category) {
@@ -50,7 +60,7 @@ export default function JobTable() {
         }
         return 0;
       })
-    , [category, searchText]);
+    , [category, searchText, onlyFavs, favs]);
 
   const paginatedJobs = useMemo(() => {
     const start = (page - 1) * itemsPerPage;
