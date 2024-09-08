@@ -71,14 +71,14 @@ export default function CategoryBar() {
             </div>
           </li>
           <li>
-            <div className={`tooltip tooltip-bottom ${isActiveListingType('offer') ? 'active' : ''}`}>
-              <Link href={pathname + '?' + createQueryString('listingType', 'offer')}
+            <div className={`tooltip tooltip-bottom ${isActiveListingType('search') ? 'active' : ''}`}>
+              <Link href={pathname + '?' + createQueryString('listingType', 'search')}
               ><HiBuildingOffice className="inline-block" /> Arbeitgebende</Link>
             </div>
           </li>
           <li>
-            <div className={`tooltip tooltip-bottom ${isActiveListingType('search') ? 'active' : ''}`}>
-              <Link href={pathname + '?' + createQueryString('listingType', 'search')}
+            <div className={`tooltip tooltip-bottom ${isActiveListingType('offer') ? 'active' : ''}`}>
+              <Link href={pathname + '?' + createQueryString('listingType', 'offer')}
               ><HiUser className="inline-block" /> Arbeitende</Link>
             </div>
           </li>

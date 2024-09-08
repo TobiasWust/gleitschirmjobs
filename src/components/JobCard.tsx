@@ -25,7 +25,7 @@ export default function JobCard({ job }: { job: Job }) {
           <div className="card-body">
             <div className="flex justify-between">
               <h2 className="card-title">
-                {job.listingType === 'offer' ?
+                {job.listingType === 'search' ?
                   <HiBuildingOffice /> :
                   <HiUser />
                 }

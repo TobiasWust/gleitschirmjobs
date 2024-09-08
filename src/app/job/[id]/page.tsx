@@ -27,7 +27,7 @@ export default function Job({ params: { id } }: { params: { id: string } }) {
       <div className="bg-base-200 rounded-2xl p-4 grid gap-4">
         <div className="flex justify-between">
           <h2 className="card-title">
-            {job.listingType === 'offer' ?
+            {job.listingType === 'search' ?
               <HiBuildingOffice /> :
               <HiUser />
             }
