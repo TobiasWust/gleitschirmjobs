@@ -1,6 +1,6 @@
 'use client';
 
-import { useCallback } from "react";
+import { Suspense, useCallback } from "react";
 import categories from "../data/categories";
 import { usePathname, useSearchParams } from "next/navigation";
 import Link from "next/link";
@@ -42,62 +42,64 @@ export default function CategoryBar() {
     [searchParams]
   )
   return (
-    <div className="navbar sticky top-0 bg-base-100 z-10">
-      <div className="md:container md:mx-auto p-4 md:p-0 flex gap-4 flex-wrap">
-        <ul className="menu menu-sm menu-horizontal bg-base-300 rounded">
-          <li>
-            <div className={`tooltip tooltip-bottom ${!activeCategory && activePathname === pathname ? 'active' : ''}`} >
-              <Link href={pathname + '?' + removeQueryString('category')}
-              >Alle</Link>
-            </div>
-          </li>
-          {categories.map((category) => (
-            <li key={category.id}>
-              <div className={`tooltip tooltip-bottom ${isActiveCategory(category.name) ? 'active' : ''}`} data-tip={category.description}>
-                <Link href={
-                  pathname + '?' + createQueryString('category', category.name)
-                }
-                >{category.name}</Link>
+    <Suspense>
+      <div className="navbar sticky top-0 bg-base-100 z-10">
+        <div className="md:container md:mx-auto p-4 md:p-0 flex gap-4 flex-wrap">
+          <ul className="menu menu-sm menu-horizontal bg-base-300 rounded">
+            <li>
+              <div className={`tooltip tooltip-bottom ${!activeCategory && activePathname === pathname ? 'active' : ''}`} >
+                <Link href={pathname + '?' + removeQueryString('category')}
+                >Alle</Link>
               </div>
             </li>
-          ))}
-        </ul>
+            {categories.map((category) => (
+              <li key={category.id}>
+                <div className={`tooltip tooltip-bottom ${isActiveCategory(category.name) ? 'active' : ''}`} data-tip={category.description}>
+                  <Link href={
+                    pathname + '?' + createQueryString('category', category.name)
+                  }
+                  >{category.name}</Link>
+                </div>
+              </li>
+            ))}
+          </ul>
 
-        <ul className="menu menu-sm menu-horizontal bg-base-300 rounded">
-          <li>
-            <div className={`tooltip tooltip-bottom ${!activeListingType && activePathname === pathname ? 'active' : ''}`} >
-              <Link href={pathname + '?' + removeQueryString('listingType')}
-              >Alle</Link>
-            </div>
-          </li>
-          <li>
-            <div className={`tooltip tooltip-bottom ${isActiveListingType('offer') ? 'active' : ''}`}>
-              <Link href={pathname + '?' + createQueryString('listingType', 'offer')}
-              ><HiBuildingOffice className="inline-block" /> Arbeitgebende</Link>
-            </div>
-          </li>
-          <li>
-            <div className={`tooltip tooltip-bottom ${isActiveListingType('search') ? 'active' : ''}`}>
-              <Link href={pathname + '?' + createQueryString('listingType', 'search')}
-              ><HiUser className="inline-block" /> Arbeitende</Link>
-            </div>
-          </li>
-        </ul>
+          <ul className="menu menu-sm menu-horizontal bg-base-300 rounded">
+            <li>
+              <div className={`tooltip tooltip-bottom ${!activeListingType && activePathname === pathname ? 'active' : ''}`} >
+                <Link href={pathname + '?' + removeQueryString('listingType')}
+                >Alle</Link>
+              </div>
+            </li>
+            <li>
+              <div className={`tooltip tooltip-bottom ${isActiveListingType('offer') ? 'active' : ''}`}>
+                <Link href={pathname + '?' + createQueryString('listingType', 'offer')}
+                ><HiBuildingOffice className="inline-block" /> Arbeitgebende</Link>
+              </div>
+            </li>
+            <li>
+              <div className={`tooltip tooltip-bottom ${isActiveListingType('search') ? 'active' : ''}`}>
+                <Link href={pathname + '?' + createQueryString('listingType', 'search')}
+                ><HiUser className="inline-block" /> Arbeitende</Link>
+              </div>
+            </li>
+          </ul>
 
-        <ul className="menu menu-sm menu-horizontal bg-base-300 rounded">
-          <li>
-            <button onClick={toggleOnlyFavs}>
-              {onlyFavs ?
-                <HiStar className="text-yellow-300" /> :
-                <HiOutlineStar />
-              } Nur Germerkte ({favs.length})</button>
-          </li>
-        </ul>
+          <ul className="menu menu-sm menu-horizontal bg-base-300 rounded">
+            <li>
+              <button onClick={toggleOnlyFavs}>
+                {onlyFavs ?
+                  <HiStar className="text-yellow-300" /> :
+                  <HiOutlineStar />
+                } Nur Germerkte ({favs.length})</button>
+            </li>
+          </ul>
 
-        <div className="flex-1 text-right">
-          <Link href="/inserat" className="btn btn-primary ">Kostenlos inserieren</Link>
+          <div className="flex-1 text-right">
+            <Link href="/inserat" className="btn btn-primary ">Kostenlos inserieren</Link>
+          </div>
         </div>
       </div>
-    </div>
+    </Suspense>
   );
 }
