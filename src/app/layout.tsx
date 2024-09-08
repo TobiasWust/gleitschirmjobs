@@ -5,6 +5,7 @@ import Footer from "../components/Footer";
 import Filterbar from "../components/Filterbar";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
+import MobileFilter from "../components/MobileFilter";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -32,17 +33,19 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Header />
-        <Filterbar />
-        <div className="max-w-screen-xl md:mx-auto p-4 md:p-0 grid md:grid-cols-4 gap-4">
-          <div className="col-span-3">
-            {children}
+        <MobileFilter>
+          <Header />
+          <Filterbar />
+          <div className="max-w-screen-xl md:mx-auto p-4 md:p-0 grid md:grid-cols-4 gap-4">
+            <div className="col-span-3">
+              {children}
+            </div>
+            <div className="col-span-3 md:col-span-1">
+              <Sidebar />
+            </div>
           </div>
-          <div className="col-span-3 md:col-span-1">
-            <Sidebar />
-          </div>
-        </div>
-        <Footer />
+          <Footer />
+        </MobileFilter>
       </body>
     </html>
   );

@@ -42,8 +42,8 @@ export default function Filter({ mobileView = false }: Readonly<{ mobileView?: b
     [searchParams]
   )
   return (
-    <div className={`${mobileView ? 'md:flex flex-row hidden' : 'md:flex hidden'} gap-4 flex-wrap`}>
-      <ul className="menu menu-sm menu-horizontal bg-base-300 rounded">
+    <div className={`${mobileView ? 'flex flex-row md:hidden' : 'md:flex hidden'} gap-4 flex-wrap`}>
+      <ul className="menu menu-sm w-full md:w-auto md:menu-horizontal bg-base-300 rounded">
         <li>
           <div className={`tooltip tooltip-bottom ${!activeCategory && activePathname === pathname ? 'active' : ''}`} >
             <Link href={pathname + '?' + removeQueryString('category')}
@@ -62,7 +62,7 @@ export default function Filter({ mobileView = false }: Readonly<{ mobileView?: b
         ))}
       </ul>
 
-      <ul className="menu menu-sm menu-horizontal bg-base-300 rounded">
+      <ul className="menu menu-sm w-full md:w-auto md:menu-horizontal bg-base-300 rounded">
         <li>
           <div className={`tooltip tooltip-bottom ${!activeListingType && activePathname === pathname ? 'active' : ''}`}>
             <Link href={pathname + '?' + removeQueryString('listingType')}
@@ -83,7 +83,7 @@ export default function Filter({ mobileView = false }: Readonly<{ mobileView?: b
         </li>
       </ul>
 
-      <ul className="menu menu-sm menu-horizontal bg-base-300 rounded">
+      <ul className="menu menu-sm w-full md:w-auto md:menu-horizontal bg-base-300 rounded">
         <li>
           <button onClick={toggleOnlyFavs}>
             {onlyFavs ?
