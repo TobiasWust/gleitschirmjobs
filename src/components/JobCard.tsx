@@ -1,5 +1,5 @@
 'use client';
-import { HiOutlineArrowTopRightOnSquare, HiOutlineStar, HiStar } from "react-icons/hi2";
+import { HiOutlineStar, HiStar } from "react-icons/hi2";
 import { useMemo } from "react"
 import { Job } from "../data/jobs";
 import { getCategoryNameById } from "../data/categories";
@@ -12,7 +12,7 @@ export default function JobCard({ job }: { job: Job }) {
 
   const category = useMemo(() => getCategoryNameById(job.categoryId), [job.categoryId]);
 
-  const handleFav = (e) => {
+  const handleFav = (e: React.MouseEvent) => {
     e.stopPropagation();
     e.preventDefault();
     toggleFav(job.id);

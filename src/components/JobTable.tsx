@@ -5,12 +5,15 @@ import jobs from "../data/jobs";
 import { useSearchParams } from 'next/navigation'
 import { getCategoryNameById } from "../data/categories";
 import { useMemo, useState } from "react";
+import { useSearchFilter } from "../store/useSearchFilter";
 
 const itemsPerPage = 10;
 
 export default function JobTable() {
   const searchParams = useSearchParams()
   const category = searchParams.get('category')
+
+  const searchText = useSearchFilter((state) => state.searchText);
 
   const [page, setPage] = useState(1);
 
@@ -20,6 +23,7 @@ export default function JobTable() {
 
   const filteredJobs = useMemo(() =>
     jobs
+      // category filter
       .filter((job) => {
         if (category) {
           const jobCategory = getCategoryNameById(job.categoryId);
@@ -27,6 +31,16 @@ export default function JobTable() {
         }
         return true
       })
+      // searchText filter
+      .filter(job => {
+        return Object.values(job).some(value => {
+          if (Array.isArray(value)) {
+            return value.some(val => val.toLowerCase().includes(searchText.toLowerCase()));
+          }
+          return String(value).toLowerCase().includes(searchText.toLowerCase());
+        })
+      })
+      // highlights first
       .sort((a, b) => {
         if (a.highlight && !b.highlight) {
           return -1;
@@ -36,7 +50,7 @@ export default function JobTable() {
         }
         return 0;
       })
-    , [category]);
+    , [category, searchText]);
 
   const paginatedJobs = useMemo(() => {
     const start = (page - 1) * itemsPerPage;
@@ -47,21 +61,26 @@ export default function JobTable() {
   const pageCount = Math.ceil(filteredJobs.length / itemsPerPage);
 
   return (
-    <div className="flex gap-4 flex-col">
-      {
-        paginatedJobs.map((job) =>
-          <JobCard key={job.id} job={job} />
-        )
-      }
-      <div className="join">
-        <button className="join-item btn" disabled={page === 1} onClick={() => handlePage(page > 1 ? page - 1 : 1)}>&lt;</button>
+    <div>
+      <p className="text-neutral-content mb-4">
+        {filteredJobs.length} Jobs gefunden
+      </p>
+      <div className="flex gap-4 flex-col">
         {
-          Array.from({ length: pageCount }, (_, i) => i + 1).map((item) =>
-            <button key={item} className={`join-item btn ${item === page ? 'btn-active' : ''}`} onClick={() => handlePage(item)}>{item}</button>
+          paginatedJobs.map((job) =>
+            <JobCard key={job.id} job={job} />
           )
         }
-        <button className="join-item btn" disabled={page === pageCount} onClick={() => handlePage(page < pageCount ? page + 1 : pageCount)}>&gt;</button>
-        {/* <button className="join-item btn">4</button> */}
+        <div className="join">
+          <button className="join-item btn" disabled={page === 1} onClick={() => handlePage(page > 1 ? page - 1 : 1)}>&lt;</button>
+          {
+            Array.from({ length: pageCount }, (_, i) => i + 1).map((item) =>
+              <button key={item} className={`join-item btn ${item === page ? 'btn-active' : ''}`} onClick={() => handlePage(item)}>{item}</button>
+            )
+          }
+          <button className="join-item btn" disabled={page === pageCount} onClick={() => handlePage(page < pageCount ? page + 1 : pageCount)}>&gt;</button>
+          {/* <button className="join-item btn">4</button> */}
+        </div>
       </div>
     </div>
   )
