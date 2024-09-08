@@ -26,7 +26,7 @@ export default function Job({ params: { id } }: { params: { id: string } }) {
     <main className="py-4">
       <div className="bg-base-200 rounded-2xl p-4 grid gap-4">
         <div className="flex justify-between">
-          <h2 className="card-title">
+          <h2 className="card-title flex-wrap">
             {job.listingType === 'search' ?
               <HiBuildingOffice /> :
               <HiUser />

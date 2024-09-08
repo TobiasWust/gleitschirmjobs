@@ -2,10 +2,9 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Footer from "../components/Footer";
-import CategoryBar from "../components/Filterbar";
+import Filterbar from "../components/Filterbar";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
-import { Suspense } from "react";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -34,9 +33,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Header />
-        <Suspense>
-          <CategoryBar />
-        </Suspense>
+        <Filterbar />
         <div className="max-w-screen-xl md:mx-auto p-4 md:p-0 grid md:grid-cols-4 gap-4">
           <div className="col-span-3">
             {children}
