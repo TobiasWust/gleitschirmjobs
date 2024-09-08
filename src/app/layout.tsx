@@ -19,8 +19,8 @@ const geistMono = localFont({
 });
 
 export const metadata: Metadata = {
-  title: "Gleitschirmjobs - Die erste Jobbörse für Gleitschirmflieger.",
-  description: "Willkommen bei Gleitschirmjobs.de – Die größte Jobbörse für Gleitschirmfliegen im deutschsprachigen Raum! Finde jetzt spannende Jobs für Gleitschirmfluglehrer, Tandempiloten und vieles mehr in Deutschland und Österreich. Wir verbinden Arbeitgeber und qualifizierte Fachkräfte im Bereich des Gleitschirmfliegens. Starte jetzt deine Karriere in der Luft!",
+  title: "Gleitschirmjobs - Die Jobbörse für Gleitschirmfliegende.",
+  description: "Die Jobbörse für Gleitschirmfliegende im deutschsprachigen Raum! Finde spannende Jobs in Deutschland und Österreich. Wir verbinden Arbeitgebende und qualifizierte Fachkräfte im Bereich des Gleitschirmfliegens. Starte jetzt deine Karriere in der Luft!",
 };
 
 export default function RootLayout({

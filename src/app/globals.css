@@ -35,6 +35,10 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+.tooltip:before {
+  max-width: 10rem;
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;
