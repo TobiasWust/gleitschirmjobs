@@ -41,7 +41,7 @@ export default function JobModal({ job }: { job: Job }) {
         <div className="card-actions justify-between items-center">
           <div className="card-actions">
             {
-              job.employmentType.map((type) => <div className="badge badge-outline" key={type}>{type}</div>)
+              // job.employmentType.map((type) => <div className="badge badge-outline" key={type}>{type}</div>)
             }
             <a className="text-primary flex items-center gap-1" href={job.jobUrl} target="_blank" rel="noreferrer">Ausschreibung auf externer Seite <HiOutlineArrowTopRightOnSquare /></a>
           </div>
