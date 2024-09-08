@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import Filter from "./Filter";
 
 export default function MobileFilter({ children }: Readonly<{ children: React.ReactNode; }>) {
@@ -10,9 +11,9 @@ export default function MobileFilter({ children }: Readonly<{ children: React.Re
       <div className="drawer-side z-20">
         <label htmlFor="mobileNav" aria-label="close sidebar" className="drawer-overlay"></label>
         <div className="menu bg-base-200 text-base-content min-h-full w-1/3 p-4">
-          <Suspend>
+          <Suspense>
             <Filter mobileView />
-          </Suspend>
+          </Suspense>
         </div>
       </div>
     </div >
