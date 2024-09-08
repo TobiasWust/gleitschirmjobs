@@ -65,6 +65,28 @@ const jobs: Job[] = [
     listingType: 'offer',
     highlight: false
   },
+  {
+    id: 4,
+    title: "Fluglehrer für Flugreise",
+    company: "Flugreisefirma",
+    location: "Alaska",
+    date: "08.09.2024",
+    description: "Wir suchen einen Fluglehrer, der nach Alaska will. Du solltest Erfahrung mit Kälte haben, außerdem solltest du ein Bär sein. Wir haben keine Ahnung von Gleitschirmen. Immerhin haben wir einen Gleitschirm. Vielleicht. Wir haben auch keine Ahnung von Fluglehrern. Aber wir haben eine Ahnung von Flugreisen. Und die machen wir. Nach Alaska. Mit dir. Wenn du ein Bär bist.",
+    categoryId: 0,
+    listingType: 'search',
+    highlight: false
+  },
+  {
+    id: 5,
+    title: "Büroaushilfe",
+    company: "Irgendwer anders",
+    location: "München",
+    date: "08.09.2024",
+    description: "Wir brauchen jemanden, der uns hilft.",
+    categoryId: 0,
+    listingType: 'search',
+    highlight: false
+  },
 ]
 
 export default jobs;

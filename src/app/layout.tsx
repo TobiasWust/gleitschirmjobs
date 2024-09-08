@@ -4,6 +4,7 @@ import "./globals.css";
 import Footer from "../components/Footer";
 import CategoryBar from "../components/Filterbar";
 import Sidebar from "../components/Sidebar";
+import Header from "../components/Header";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -31,7 +32,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* <Header /> */}
+        <Header />
         <CategoryBar />
         <div className="md:container md:mx-auto p-4 md:p-0 grid md:grid-cols-4 gap-4">
           <div className="col-span-3">

@@ -1,7 +1,7 @@
 export default function Header() {
   return (
     <header
-      className="hero h-1/4 bg-center bg-cover"
+      className="hero h-[30vh] bg-top bg-cover"
       style={{
         backgroundImage: "url('/headerimage.jpg')",
       }}>

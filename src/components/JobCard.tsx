@@ -36,7 +36,7 @@ export default function JobCard({ job }: { job: Job }) {
               <h3 className="font-semibold text-primary">{job.company}</h3>
               <span className="text-slate-400">{job.location}</span>
             </div>
-            <div>
+            <div className="line-clamp-2">
               {job.description}
             </div>
             {/* {job.jobUrl &&
