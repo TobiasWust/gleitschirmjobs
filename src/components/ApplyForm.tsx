@@ -1,10 +1,10 @@
 'use client';
-import { Job } from "../types/job.type";
 
-export default function ApplyForm({ job }: { job: Job }) {
+export default function ApplyForm({ jobId, company }: { jobId: number, company: string }) {
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     // e.preventDefault();
     console.log({ e });
+    console.log('jobId:', jobId);
     const form = e.currentTarget;
     const formData = new FormData(form);
     const data = Object.fromEntries(formData.entries());
@@ -33,7 +33,7 @@ export default function ApplyForm({ job }: { job: Job }) {
       </label>
       <div className="flex justify-end items-center gap-4 pt-4">
         <p className="text-sm">
-          Diese Bewerbung wird direkt an {job.company} weitergeleitet.
+          Diese Bewerbung wird direkt an {company} weitergeleitet.
         </p>
         <button type="submit" className="btn btn-primary">Bewerben</button>
       </div>
