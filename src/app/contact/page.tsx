@@ -54,17 +54,17 @@ export default function ContactPage() {
             <label className="label">
               <span className="label-text">Dein Name oder Unternehmen</span>
             </label>
-            <input type="text" name="name" placeholder="Name" required className="input input-bordered" maxLength={160} />
+            <input type="text" id="name" name="name" placeholder="Name" required className="input input-bordered" maxLength={160} />
 
             <label className="label">
               <span className="label-text">Deine E-Mail-Adresse</span>
             </label>
-            <input type="email" name="email" placeholder="E-Mail" required className="input input-bordered" maxLength={160} />
+            <input type="email" id="email" name="email" placeholder="E-Mail" required className="input input-bordered" maxLength={160} />
 
             <label className="label">
               <span className="label-text">Deine Nachricht</span>
             </label>
-            <textarea placeholder="Nachricht" name="message" required rows={5} className="textarea textarea-bordered" maxLength={5000}></textarea>
+            <textarea placeholder="Nachricht" id="message" name="message" required rows={5} className="textarea textarea-bordered" maxLength={5000}></textarea>
 
             <button className="btn btn-primary mt-4" type="submit" disabled={status === 'pending'}>Senden</button>
             {status === 'ok' && (
