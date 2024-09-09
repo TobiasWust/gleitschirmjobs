@@ -1,5 +1,4 @@
 import { HiBuildingOffice, HiOutlineArrowTopRightOnSquare, HiUser } from "react-icons/hi2";
-import { useMemo } from "react";
 import { getCategoryNameById } from "../../../data/categories";
 import { createClient } from "../../../utils/supabase/server";
 import ApplyForm from "../../../components/ApplyForm";
@@ -8,11 +7,11 @@ export default async function Job({ params: { id } }: { params: { id: string } }
   const supabase = await createClient();
   const { data: job } = await supabase.from("jobs").select("*").eq("id", id).single();
 
-  const category = getCategoryNameById(job.categoryId);
-
   if (!job) {
     return <div>Job {id} not found</div>
   }
+
+  const category = getCategoryNameById(job.categoryId);
 
   return (
     <main className="py-4">
