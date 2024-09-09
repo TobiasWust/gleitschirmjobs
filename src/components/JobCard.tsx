@@ -1,7 +1,7 @@
 'use client';
 import { HiBuildingOffice, HiOutlineStar, HiStar, HiUser } from "react-icons/hi2";
 import { useMemo } from "react"
-import { Job } from "../data/jobs.demo";
+import { Job } from "../types/job.type";
 import { getCategoryNameById } from "../data/categories";
 import { useFav } from "../store/useFav";
 import Link from "next/link";
@@ -30,7 +30,7 @@ export default function JobCard({ job }: { job: Job }) {
                   <HiUser />
                 }
                 {job.title}<span className="badge badge-xs badge-primary">{category}</span></h2>
-              <div className="text-xs">{job.date}</div>
+              <div className="text-xs">{new Date(job.created_at).toLocaleDateString('de')}</div>
             </div>
             <div className="flex gap-4">
               <h3 className="font-semibold text-primary">{job.company}</h3>
@@ -39,8 +39,6 @@ export default function JobCard({ job }: { job: Job }) {
             <div className="line-clamp-2">
               {job.description}
             </div>
-            {/* {job.jobUrl &&
-            <a className="text-primary flex items-center gap-1" href={job.jobUrl} target="_blank" rel="noreferrer">Ausschreibung auf externer Seite <HiOutlineArrowTopRightOnSquare /></a>} */}
             <div className="card-actions justify-between items-center">
               <div className="card-actions">
                 {

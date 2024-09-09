@@ -1,25 +1,17 @@
-'use client';
-
 import { HiBuildingOffice, HiOutlineArrowTopRightOnSquare, HiUser } from "react-icons/hi2";
-import jobs from "../../../data/jobs.demo";
 import { useMemo } from "react";
 import { getCategoryNameById } from "../../../data/categories";
+import { createClient } from "../../../utils/supabase/server";
+import ApplyForm from "../../../components/ApplyForm";
 
-export default function Job({ params: { id } }: { params: { id: string } }) {
-  const job = jobs.find((j) => j.id === Number(id));
-  const category = useMemo(() => job ? getCategoryNameById(job.categoryId) : null, [job]);
+export default async function Job({ params: { id } }: { params: { id: string } }) {
+  const supabase = await createClient();
+  const { data: job } = await supabase.from("jobs").select("*").eq("id", id).single();
+
+  const category = getCategoryNameById(job.categoryId);
 
   if (!job) {
     return <div>Job {id} not found</div>
-  }
-
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    // e.preventDefault();
-    console.log({ e });
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
-    console.log(data);
   }
 
   return (
@@ -31,8 +23,9 @@ export default function Job({ params: { id } }: { params: { id: string } }) {
               <HiBuildingOffice /> :
               <HiUser />
             }
-            {job.title}<span className="badge badge-xs badge-primary">{category}</span></h2>
-          <div>{job.date}</div>
+            {job.title}<span className="badge badge-xs badge-primary">{category}</span>
+          </h2>
+          <div>{new Date(job.created_at).toLocaleDateString('de')}</div>
         </div>
         <div className="flex gap-4">
           <h3 className='font-semibold'>{
@@ -51,32 +44,7 @@ export default function Job({ params: { id } }: { params: { id: string } }) {
           </div>
           {job.jobUrl && <a className="text-primary flex items-center gap-1" href={job.jobUrl} target="_blank" rel="noreferrer">Ausschreibung auf externer Seite <HiOutlineArrowTopRightOnSquare /></a>}
         </div>
-        <form className="md:w-1/2 m-auto" onSubmit={handleSubmit}>
-          <label className="form-control w-full">
-            <div className="label">
-              <span className="label-text">Name</span>
-            </div>
-            <input type="text" name="name" required placeholder="Name" className="input input-bordered w-full" />
-          </label>
-          <label className="form-control w-full">
-            <div className="label">
-              <span className="label-text">Email</span>
-            </div>
-            <input type="email" name="email" required placeholder="Email" className="input input-bordered w-full" />
-          </label>
-          <label className="form-control">
-            <div className="label">
-              <span className="label-text">Nachricht</span>
-            </div>
-            <textarea className="textarea textarea-bordered h-24" name="message" required placeholder="Nachricht"></textarea>
-          </label>
-          <div className="flex justify-end items-center gap-4 pt-4">
-            <p className="text-sm">
-              Diese Bewerbung wird direkt an {job.company} weitergeleitet.
-            </p>
-            <button type="submit" className="btn btn-primary">Bewerben</button>
-          </div>
-        </form>
+        <ApplyForm job={job} />
       </div>
     </main>
   )
