@@ -33,9 +33,9 @@ export default function ApplyForm({ jobId, company }: { jobId: number, company: 
       </label>
       <div className="flex justify-end items-center gap-4 pt-4">
         <p className="text-sm">
-          Diese Bewerbung wird direkt an {company} weitergeleitet.
+          Diese Nachricht wird direkt an {company} gesendet.
         </p>
-        <button type="submit" className="btn btn-primary">Bewerben</button>
+        <button type="submit" className="btn btn-primary">Senden</button>
       </div>
     </form>
   )

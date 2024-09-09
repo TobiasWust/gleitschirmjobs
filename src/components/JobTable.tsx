@@ -80,7 +80,7 @@ export default function JobTable({ jobs = [] }: { jobs: Job[] }) {
   return (
     <div>
       <p className="text-neutral-content mb-4">
-        {filteredJobs.length} Jobs gefunden
+        {filteredJobs.length} Anzeigen gefunden
       </p>
       <div className="flex gap-4 flex-col">
         {
@@ -96,7 +96,6 @@ export default function JobTable({ jobs = [] }: { jobs: Job[] }) {
             )
           }
           <button className="join-item btn" disabled={page === pageCount} onClick={() => handlePage(page < pageCount ? page + 1 : pageCount)}>&gt;</button>
-          {/* <button className="join-item btn">4</button> */}
         </div>
       </div>
     </div>
