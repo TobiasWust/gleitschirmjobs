@@ -1,10 +1,10 @@
 'use client';
 import { HiBuildingOffice, HiOutlineStar, HiStar, HiUser } from "react-icons/hi2";
 import { useMemo } from "react"
-import { Job } from "../types/job.type";
 import { getCategoryNameById } from "../data/categories";
 import { useFav } from "../store/useFav";
 import Link from "next/link";
+import { Job } from "../types/supabaseTypes";
 
 export default function JobCard({ job }: { job: Job }) {
   const toggleFav = useFav((state) => state.toggleFav);

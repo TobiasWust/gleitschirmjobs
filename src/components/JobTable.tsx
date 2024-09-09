@@ -5,7 +5,7 @@ import { getCategoryNameById } from "../data/categories";
 import { useMemo, useState } from "react";
 import { useSearchFilter } from "../store/useSearchFilter";
 import { useFav } from "../store/useFav";
-import { Job } from "../types/job.type";
+import { Job } from "../types/supabaseTypes";
 
 const itemsPerPage = 10;
 
