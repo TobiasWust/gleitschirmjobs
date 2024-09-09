@@ -18,7 +18,7 @@ export default function Filterbar() {
         </Suspense>
 
         <div className="flex-1 text-right">
-          <Link href="/inserat" className="btn btn-primary ">Kostenlos inserieren</Link>
+          <Link href="/post" className="btn btn-primary ">Kostenlos inserieren</Link>
         </div>
       </div>
     </div>

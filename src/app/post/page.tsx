@@ -23,7 +23,7 @@ export default function PostPage() {
         <div className="flex justify-between">
           <h1 className="card-title flex-wrap">Neue Anzeige</h1>
         </div>
-        <p className="text-yellow-300 p-4" >Soll die Anzeige immer ganz oben erscheinen? <Link className="link" href="/contact">Kontaktiere uns für ein Angebot.</Link></p>
+        <p className="text-yellow-300 p-4" >Soll die Anzeige immer ganz oben erscheinen? <Link className="link" href="/contact">Kontaktiere uns für ein Angebot</Link> nach dem Absenden der Anzeige.</p>
         <form>
           <div className="form-control">
             <label className="label">
@@ -43,32 +43,32 @@ export default function PostPage() {
             <label className="label">
               <span className="label-text">Titel der Anzeige</span>
             </label>
-            <input type="text" placeholder="Titel" required className="input input-bordered" />
+            <input type="text" placeholder="Titel" required className="input input-bordered" maxLength={160} />
 
             <label className="label">
               <span className="label-text">Dein Name oder Unternehmen</span>
             </label>
-            <input type="text" placeholder="Name" required className="input input-bordered" />
+            <input type="text" placeholder="Name" required className="input input-bordered" maxLength={160} />
 
             <label className="label">
               <span className="label-text">Website <span className="text-xs">(optional)</span></span>
             </label>
-            <input type="text" placeholder="Website" className="input input-bordered" />
+            <input type="text" placeholder="Website" className="input input-bordered" maxLength={160} />
 
             <label className="label">
               <span className="label-text">Ort <span className="text-xs">(optional)</span></span>
             </label>
-            <input type="text" placeholder="Ort" className="input input-bordered" />
+            <input type="text" placeholder="Ort" className="input input-bordered" maxLength={60} />
 
             <label className="label">
               <span className="label-text">Anzeigentext</span>
             </label>
-            <textarea placeholder="Beschreibung" required rows={5} className="textarea textarea-bordered"></textarea>
+            <textarea placeholder="Beschreibung" required rows={5} className="textarea textarea-bordered" maxLength={5000}></textarea>
 
             <label className="label">
               <span className="label-text">Externer Link zur Ausschreibung <span className="text-xs">(optional)</span></span>
             </label>
-            <input type="text" placeholder="Anzeigenlink" className="input input-bordered" />
+            <input type="text" placeholder="Anzeigenlink" className="input input-bordered" maxLength={160} />
 
             <label className="label">
               <span className="label-text">Kategorie</span>
@@ -102,7 +102,7 @@ export default function PostPage() {
             <label className="label">
               <span className="label-text">E-Mail</span>
             </label>
-            <input type="email" placeholder="E-Mail" required className="input input-bordered" />
+            <input type="email" placeholder="E-Mail" required className="input input-bordered" maxLength={160} />
 
             <div className="p-4">
               <p className="text-xs text-slate-400">Die E-Mail-Adresse wird nicht veröffentlicht.</p>

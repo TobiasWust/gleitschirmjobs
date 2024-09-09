@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { GiHearts } from "react-icons/gi";
 
 export default function Footer() {
@@ -6,14 +7,14 @@ export default function Footer() {
       <footer className="footer justify-center bg-neutral text-neutral-content p-10 mt-4">
         <nav>
           <h6 className="footer-title">Services</h6>
-          <a className="link link-hover">Inserieren</a>
-          <a className="link link-hover">Werben</a>
-          <a className="link link-hover">Highlight</a>
+          <Link href="/post" className="link link-hover">Inserieren</Link>
+          <Link href="/contact" className="link link-hover">Werben</Link>
+          <Link href="/contact" className="link link-hover">Highlight</Link>
         </nav>
         <nav>
           <h6 className="footer-title">Informationen</h6>
           <a className="link link-hover">Über</a>
-          <a className="link link-hover">Kontakt</a>
+          <Link href="/contact" className="link link-hover">Kontakt</Link>
           <a className="link link-hover">Datenschutz</a>
           <a className="link link-hover">Impressum</a>
         </nav>
