@@ -3,7 +3,7 @@ export default function Header() {
     <header
       className="hero h-[30vh] bg-top bg-cover"
       style={{
-        backgroundImage: "url('/headerimage.jpg')",
+        // backgroundImage: "url('/headerimage.jpg')",
       }}>
       <div className="hero-overlay bg-opacity-60"></div>
       <div className="hero-content text-neutral-content column">
