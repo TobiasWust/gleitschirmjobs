@@ -1,16 +1,15 @@
 'use client';
-
 import JobCard from "./JobCard";
-import jobs from "../data/jobs";
 import { useSearchParams } from 'next/navigation'
 import { getCategoryNameById } from "../data/categories";
 import { useMemo, useState } from "react";
 import { useSearchFilter } from "../store/useSearchFilter";
 import { useFav } from "../store/useFav";
+import { Job } from "../types/job.type";
 
 const itemsPerPage = 10;
 
-export default function JobTable() {
+export default function JobTable({ jobs = [] }: { jobs: Job[] }) {
   const searchParams = useSearchParams()
   const category = searchParams.get('category')
   const listingType = searchParams.get('listingType')
@@ -68,7 +67,7 @@ export default function JobTable() {
         }
         return 0;
       })
-    , [category, searchText, onlyFavs, favs, listingType]);
+    , [category, searchText, onlyFavs, favs, listingType, jobs]);
 
   const paginatedJobs = useMemo(() => {
     const start = (page - 1) * itemsPerPage;

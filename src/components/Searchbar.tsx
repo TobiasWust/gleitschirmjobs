@@ -1,3 +1,5 @@
+'use client';
+
 import { HiMagnifyingGlass } from "react-icons/hi2";
 import { useSearchFilter } from "../store/useSearchFilter";
 

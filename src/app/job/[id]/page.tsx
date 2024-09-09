@@ -1,7 +1,7 @@
 'use client';
 
 import { HiBuildingOffice, HiOutlineArrowTopRightOnSquare, HiUser } from "react-icons/hi2";
-import jobs from "../../../data/jobs";
+import jobs from "../../../data/jobs.demo";
 import { useMemo } from "react";
 import { getCategoryNameById } from "../../../data/categories";
 

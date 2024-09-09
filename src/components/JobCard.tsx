@@ -1,7 +1,7 @@
 'use client';
 import { HiBuildingOffice, HiOutlineStar, HiStar, HiUser } from "react-icons/hi2";
 import { useMemo } from "react"
-import { Job } from "../data/jobs";
+import { Job } from "../data/jobs.demo";
 import { getCategoryNameById } from "../data/categories";
 import { useFav } from "../store/useFav";
 import Link from "next/link";

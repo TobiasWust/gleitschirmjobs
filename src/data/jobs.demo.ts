@@ -1,17 +1,4 @@
-export type Job = {
-  id: number
-  title: string;
-  company: string;
-  companyUrl?: string;
-  location: string;
-  date: string;
-  description: string;
-  jobUrl?: string;
-  categoryId: number;
-  employmentType?: ('Vollzeit' | 'Teilzeit' | 'Freelance')[]
-  listingType: 'offer' | 'search';
-  highlight: boolean;
-};
+import { Job } from "../types/job.type";
 
 const jobs: Job[] = [
   {
@@ -20,7 +7,7 @@ const jobs: Job[] = [
     company: "flugschule GmbH",
     companyUrl: "https://www.flugschule.at",
     location: "Sillian",
-    date: "07.09.2024",
+    created_at: "07.09.2024",
     description: "Einzige Flugschule in Tirol sucht Fluglehrer:in für die Ausbildung von Gleitschirmpilot:innen. Einzige Flugschule in Tirol sucht Fluglehrer:in für die Ausbildung von Gleitschirmpilot:innen. Einzige Flugschule in Tirol sucht Fluglehrer:in für die Ausbildung von Gleitschirmpilot:innen.",
     categoryId: 0,
     employmentType: ["Vollzeit", "Teilzeit", "Freelance"],
@@ -33,7 +20,7 @@ const jobs: Job[] = [
     company: "Tobias Wust",
     companyUrl: "https://wust.dev",
     location: "Egal",
-    date: "07.09.2024",
+    created_at: "07.09.2024",
     description: "Ich kann alles.",
     jobUrl: "https://wust.dev",
     categoryId: 0,
@@ -47,7 +34,7 @@ const jobs: Job[] = [
     company: "Ganz unbekannter Checkbetrieb GmbH",
     companyUrl: "https://www.flugschule.at",
     location: "Sillian",
-    date: "07.09.2024",
+    created_at: "07.09.2024",
     description: "Geil Schirme reparieren.",
     jobUrl: "https://www.flugschule.at/jobs",
     categoryId: 3,
@@ -60,7 +47,7 @@ const jobs: Job[] = [
     title: "Tandempilot aus Aschau",
     company: "Peter Pilot",
     location: "Aschau",
-    date: "08.09.2024",
+    created_at: "08.09.2024",
     description: "Hallo. Flieg mit mir.",
     categoryId: 1,
     listingType: 'offer',
@@ -71,7 +58,7 @@ const jobs: Job[] = [
     title: "Fluglehrer für Flugreise",
     company: "Flugreisefirma",
     location: "Alaska",
-    date: "08.09.2024",
+    created_at: "08.09.2024",
     description: "Wir suchen einen Fluglehrer, der nach Alaska will.\r\nDu solltest Erfahrung mit Kälte haben, außerdem solltest du ein Bär sein. Wir haben keine Ahnung von Gleitschirmen. Immerhin haben wir einen Gleitschirm.\r\nVielleicht. Wir haben auch keine Ahnung von Fluglehrern. Aber wir haben eine Ahnung von Flugreisen. Und die machen wir. Nach Alaska. Mit dir. \n\nWenn du ein Bär bist.",
     categoryId: 0,
     listingType: 'search',
@@ -82,7 +69,7 @@ const jobs: Job[] = [
     title: "Büroaushilfe",
     company: "Irgendwer anders",
     location: "München",
-    date: "08.09.2024",
+    created_at: "08.09.2024",
     description: "Wir brauchen jemanden, der uns hilft.",
     categoryId: 2,
     listingType: 'search',
@@ -93,7 +80,7 @@ const jobs: Job[] = [
     title: "Shuttlefahrer",
     company: "Taxischule",
     location: "München",
-    date: "08.09.2024",
+    created_at: "08.09.2024",
     description: "Wir suchen jemanden, der 30 mal am Tag den Ber rauf iund runter fährt.",
     categoryId: 4,
     listingType: 'search',
@@ -104,7 +91,7 @@ const jobs: Job[] = [
     title: "Unerfahrener Fluglehrer!",
     company: "Norbert Noob",
     location: "Rostock",
-    date: "08.09.2024",
+    created_at: "08.09.2024",
     description: "Ich kann selbst noch nicht fliegen, aber ich kann es dir beibringen.",
     categoryId: 0,
     listingType: 'offer',
@@ -115,7 +102,7 @@ const jobs: Job[] = [
     title: "Suchen Tandempiloten für Gardasee",
     company: "Geheime Garda Garde",
     location: "Malcesine",
-    date: "08.09.2024",
+    created_at: "08.09.2024",
     description: "Es gibt noch nicht genug Tandempiloten am Gardasee. Wir suchen dich.",
     categoryId: 1,
     listingType: 'search',
@@ -126,7 +113,7 @@ const jobs: Job[] = [
     title: "Schweißerarbeiten",
     company: "Schweißerei",
     location: "Allgäu",
-    date: "08.09.2024",
+    created_at: "08.09.2024",
     description: "Ich repariere deine Flugausrüstung.",
     categoryId: 3,
     listingType: 'offer',
@@ -137,7 +124,7 @@ const jobs: Job[] = [
     title: "Buchhalter",
     company: "Schlauwi Schlumpf",
     location: "Allgäu",
-    date: "08.09.2024",
+    created_at: "08.09.2024",
     description: "Meine Fähigkeiten: Mathe, Steuern, Doppelte Buchführung und alles andere was keiner mag.",
     categoryId: 2,
     listingType: 'offer',

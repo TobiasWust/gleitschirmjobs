@@ -1,7 +1,7 @@
 'use client';
 
 import { useMemo } from "react";
-import { Job } from "../data/jobs";
+import { Job } from "../data/jobs.demo";
 import { HiOutlineArrowTopRightOnSquare } from "react-icons/hi2";
 import { getCategoryNameById } from "../data/categories";
 
