@@ -1,6 +1,4 @@
-import { Job } from "../types/job.type";
-
-const jobs: Job[] = [
+const jobs = [
   {
     id: 0,
     title: "Fluglehrer in den Südalpen!",
