@@ -1,4 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
+import pino from "pino";
+
+const logger = pino();
 
 const handleReq = async (req: Request) => {
   const data = await req.json();
@@ -35,10 +38,10 @@ const handleReq = async (req: Request) => {
         },
       ])
       .select()
-    console.log(`Form name: ${formName}`);
-    console.log(`Form data: ${JSON.stringify(formData)}`);
-    console.log(`Result: ${result}`);
-    console.log(`Error: ${error}`);
+    logger.info(`Form name: ${formName}`);
+    logger.info(`Form data: ${JSON.stringify(formData)}`);
+    logger.info(result);
+    logger.error(error);
 
   }
   return
