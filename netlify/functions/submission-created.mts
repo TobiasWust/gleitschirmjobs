@@ -27,7 +27,7 @@ const handleReq = async (req: Request) => {
           company: formData.company,
           companyUrl: formData.companyUrl,
           description: formData.description,
-          employmentType: [''],
+          employmentType: [formData.fulltime === 'on' && 'fulltime', formData.parttime === 'on' && 'parttime', formData.freelance === 'on' && 'freelance'].filter(Boolean),
           isActive: false,
           isVerified: false,
           jobUrl: formData.jobUrl,

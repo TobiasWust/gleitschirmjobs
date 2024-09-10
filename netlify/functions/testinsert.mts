@@ -1,4 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
+import pino from "pino";
+
+const logger = pino();
 
 const handleReq = async () => {
   const supabase = await createClient(
@@ -25,8 +28,8 @@ const handleReq = async () => {
       },
     ])
     .select()
-  console.dir(result);
-  console.dir(error);
+  logger.info(result);
+  logger.error(error);
 
   return
 }

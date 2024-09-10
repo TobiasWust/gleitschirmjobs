@@ -67,7 +67,7 @@ export default function PostPage() {
             <label className="label">
               <span className="label-text">Kategorie</span>
             </label>
-            <select className="select select-bordered" name="catergoryId" required>
+            <select className="select select-bordered" name="categoryId" required>
               {
                 categories.map((category) => (
                   <option value={category.id} key={category.id}>{category.name}</option>
