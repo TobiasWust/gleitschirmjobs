@@ -23,7 +23,7 @@ const handleReq = async (req: Request) => {
       .from('jobs')
       .insert([
         {
-          categoryId: data.categoryId,
+          categoryId: formData.categoryId,
           company: formData.company,
           companyUrl: formData.companyUrl,
           description: formData.description,
