@@ -10,8 +10,22 @@
     <input name="message" type="text" />
   </form>
 
-  <form name="contact" data-netlify="true" hidden>
+  <form name="post" data-netlify="true" hidden>
+    <input type="hidden" name="form-name" value="post" />
+    <input type="text" name="listingType" />
+    <input name="title" type="text" />
+    <input name="company" type="text" />
+    <input name="companyUrl" type="text" />
+    <input name="location" type="text" />
+    <textarea name="description"></textarea>
+    <input type="text" name="jobUrl" />
+    <input type="text" name="categoryType" />
+    <input type="text" name="employmentType" />
+  </form>
+
+  <form name="apply" data-netlify="true" hidden>
     <input type="hidden" name="form-name" value="contact" />
+    <input name="jobId" type="text" />
     <input name="name" type="text" />
     <input name="email" type="text" />
     <input name="message" type="text" />
