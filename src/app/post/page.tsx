@@ -1,22 +1,11 @@
-// id: number
-// title: string;#
-// company: string;#
-// companyUrl?: string;#
-// location?: string;#
-// created_at: string;#
-// description: string;#
-// jobUrl?: string;
-// categoryId: number;
-// employmentType?: ('Vollzeit' | 'Teilzeit' | 'Freelance')[]
-// listingType: 'offer' | 'search';
-// highlight?: boolean;
-// email: string;
-
 import { HiBuildingOffice, HiUser } from "react-icons/hi2";
 import categories from "../../data/categories";
 import Link from "next/link";
+import useFormSubmit from "../../hooks/useFormSubmit";
 
 export default function PostPage() {
+  const { handleFormSubmit, status, error } = useFormSubmit();
+
   return (
     <main className="py-4">
       <div className="bg-base-200 rounded-2xl p-4 grid gap-4">
@@ -24,7 +13,8 @@ export default function PostPage() {
           <h1 className="card-title flex-wrap">Neue Anzeige</h1>
         </div>
         <p className="text-yellow-300 p-4" >Soll die Anzeige immer ganz oben erscheinen? <Link className="link" href="/contact">Kontaktiere uns für ein Angebot</Link> nach dem Absenden der Anzeige.</p>
-        <form>
+        <form onSubmit={handleFormSubmit} name="post" method="POST" netlify-honeypot="bot-field" data-netlify="true">
+          <input type="hidden" name="form-name" value="post" />
           <div className="form-control">
             <label className="label">
               <span className="label-text">Anzeigenart</span>
@@ -109,7 +99,17 @@ export default function PostPage() {
               <p className="text-xs text-slate-400">Bewerbungen werden direkt an die angegebene E-Mail-Adresse gesendet.</p>
             </div>
 
-            <button className="btn btn-primary">Anzeige erstellen</button>
+            <button className="btn btn-primary mt-4" type="submit" disabled={status === 'pending'}>Senden</button>
+            {status === 'ok' && (
+              <p>
+                Vielen Dank für deine Anzeige! Du solltest in Kürze eine E-Mail zur Verifizierung erhalten.
+              </p>
+            )}
+            {status === 'error' && (
+              <p>
+                Error: {error}
+              </p>
+            )}
 
             <p className="text-xs text-slate-400">Mit dem Absenden der Anzeige erklärst du dich mit unseren <a href="#" className="text-primary">Datenschutzbestimmungen</a> einverstanden.</p>
 

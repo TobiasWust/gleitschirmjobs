@@ -1,18 +1,14 @@
 'use client';
 
+import useFormSubmit from "../hooks/useFormSubmit";
+
 export default function ApplyForm({ jobId, company }: { jobId: number, company: string }) {
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
-    // e.preventDefault();
-    console.log({ e });
-    console.log('jobId:', jobId);
-    const form = e.currentTarget;
-    const formData = new FormData(form);
-    const data = Object.fromEntries(formData.entries());
-    console.log(data);
-  }
+  const { handleFormSubmit } = useFormSubmit();
 
   return (
-    <form className="md:w-1/2 m-auto" onSubmit={handleSubmit}>
+    <form className="md:w-1/2 m-auto" onSubmit={handleFormSubmit} name="apply" method="POST" netlify-honeypot="bot-field" data-netlify="true">
+      <input type="hidden" name="apply" value="contact" />
+      <input type="hidden" name="jobId" value={jobId} />
       <label className="form-control w-full">
         <div className="label">
           <span className="label-text">Name</span>
