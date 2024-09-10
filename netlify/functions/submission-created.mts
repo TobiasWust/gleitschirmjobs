@@ -31,6 +31,7 @@ const handleReq = async (req: Request) => {
           listingType: formData.listingType,
           location: formData.location,
           title: formData.title,
+          email: formData.email,
         },
       ])
       .select()

@@ -42,7 +42,7 @@ export default function Filter({ mobileView = false }: Readonly<{ mobileView?: b
     [searchParams]
   )
   return (
-    <div className={`${mobileView ? 'flex flex-row md:hidden' : 'md:flex hidden'} gap-4 flex-wrap`}>
+    <div className={`${mobileView ? 'flex flex-row md:hidden' : 'md:flex hidden'} gap-2 flex-wrap`}>
       <ul className="menu menu-sm w-full md:w-auto md:menu-horizontal bg-base-300 rounded">
         <li>
           <div className={`tooltip tooltip-right md:tooltip-bottom ${!activeCategory && activePathname === pathname ? 'active' : ''}`} >
