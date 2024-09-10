@@ -14,7 +14,10 @@ export default function PostPage() {
           <h1 className="card-title flex-wrap">Neue Anzeige</h1>
         </div>
         <p className="text-yellow-300 p-4" >Soll die Anzeige immer ganz oben erscheinen? <Link className="link" href="/contact">Kontaktiere uns für ein Angebot</Link> nach dem Absenden der Anzeige.</p>
-        <form onSubmit={handleFormSubmit} name="post" method="POST" netlify-honeypot="bot-field" data-netlify="true">
+
+
+        <form onSubmit={handleFormSubmit} name="post">
+          {/*  method="POST" netlify-honeypot="bot-field" data-netlify="true" */}
           <input type="hidden" name="form-name" value="post" />
           <div className="form-control">
             <label className="label">
@@ -77,15 +80,15 @@ export default function PostPage() {
             </label>
             <div className="flex gap-2">
               <label className="label cursor-pointer">
-                <input type="checkbox" name="employmentType" className="checkbox" />
+                <input type="checkbox" name="fulltime" className="checkbox" />
                 <span className="label-text pl-1">Vollzeit</span>
               </label>
               <label className="label cursor-pointer">
-                <input type="checkbox" className="checkbox" />
+                <input type="checkbox" name="parttime" className="checkbox" />
                 <span className="label-text pl-1">Teilzeit</span>
               </label>
               <label className="label cursor-pointer">
-                <input type="checkbox" name="employmentType" className="checkbox" />
+                <input type="checkbox" name="freelance" className="checkbox" />
                 <span className="label-text pl-1">Freelance</span>
               </label>
             </div>

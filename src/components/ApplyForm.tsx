@@ -3,10 +3,10 @@
 import useFormSubmit from "../hooks/useFormSubmit";
 
 export default function ApplyForm({ jobId, company }: { jobId: number, company: string }) {
-  const { handleFormSubmit } = useFormSubmit();
+  const { handleFormSubmitTest } = useFormSubmit();
 
   return (
-    <form className="md:w-1/2 m-auto" onSubmit={handleFormSubmit} name="apply" method="POST" netlify-honeypot="bot-field" data-netlify="true">
+    <form className="md:w-1/2 m-auto" onSubmit={handleFormSubmitTest} name="apply" method="POST" netlify-honeypot="bot-field" data-netlify="true">
       <input type="hidden" name="apply" value="contact" />
       <input type="hidden" name="jobId" value={jobId} />
       <label className="form-control w-full">

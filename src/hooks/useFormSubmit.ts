@@ -28,5 +28,15 @@ export default function useFormSubmit() {
     }
   }
 
-  return { handleFormSubmit, status, error };
+  const handleFormSubmitTest = (event: FormEvent) => {
+    event.preventDefault();
+    const myForm = event.target;
+    const formData = new FormData(myForm as HTMLFormElement);
+    const formDataEntries = formData.entries();
+
+    const myData = Object.fromEntries(formDataEntries);
+    console.log(myData);
+  }
+
+  return { handleFormSubmit, handleFormSubmitTest, status, error };
 }
