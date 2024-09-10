@@ -1,10 +1,8 @@
-import type { Context } from "@netlify/functions";
-
-const handleReq = async (req: Request, context: Context) => {
+const handleReq = async (req: Request) => {
   const data = await req.json();
   console.log('data:', data);
   return new Response("Hello, world!")
 }
 
 
-const contextjson = export default handleReq;
+export default handleReq;
