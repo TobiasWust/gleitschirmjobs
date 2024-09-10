@@ -1,4 +1,4 @@
-'use Client';
+'use client';
 import { HiBuildingOffice, HiUser } from "react-icons/hi2";
 import categories from "../../data/categories";
 import Link from "next/link";
