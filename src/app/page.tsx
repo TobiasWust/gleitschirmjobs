@@ -5,6 +5,7 @@ import SearchBar from "../components/Searchbar";
 
 export default async function Home() {
   const supabase = await createClient();
+  // todo dont select all fields, dont select inactive jobs
   const { data: jobs } = await supabase.from("jobs").select();
 
   return (

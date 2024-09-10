@@ -27,7 +27,7 @@ const handleReq = async (req: Request) => {
           company: formData.company,
           companyUrl: formData.companyUrl,
           description: formData.description,
-          employmentType: [formData.fulltime === 'on' && 'fulltime', formData.parttime === 'on' && 'parttime', formData.freelance === 'on' && 'freelance'].filter(Boolean),
+          employmentType: [formData.fulltime === 'on' && 'Fulltime', formData.parttime === 'on' && 'Parttime', formData.freelance === 'on' && 'Freelance'].filter(Boolean),
           isActive: false,
           isVerified: false,
           jobUrl: formData.jobUrl,
@@ -42,6 +42,8 @@ const handleReq = async (req: Request) => {
     logger.info(`Form data: ${JSON.stringify(formData)}`);
     logger.info(result);
     logger.error(error);
+
+    // todo send email for verification
 
   }
   return

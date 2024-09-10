@@ -89,7 +89,7 @@ export default function Filter({ mobileView = false }: Readonly<{ mobileView?: b
             {onlyFavs ?
               <HiStar className="text-yellow-300" /> :
               <HiOutlineStar />
-            } Nur Germerkte ({favs.length})</button>
+            } Merkliste ({favs.length})</button>
         </li>
       </ul>
     </div>
