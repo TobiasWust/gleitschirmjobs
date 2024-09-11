@@ -5,7 +5,21 @@ import ApplyForm from "../../../components/ApplyForm";
 
 export default async function Job({ params: { id } }: { params: { id: string } }) {
   const supabase = await createClient();
-  const { data: job } = await supabase.from("jobs").select("*").eq("id", id).single();
+  const { data: job } = await supabase.from("jobs").select(`
+    categoryId,
+    company,
+    companyUrl,
+    created_at,
+    description,
+    employmentType,
+    highlight,
+    id,
+    isActive,
+    jobUrl,
+    listingType,
+    location,
+    title
+  `).eq("id", id).single();
 
   if (!job) {
     return <div>Job {id} not found</div>

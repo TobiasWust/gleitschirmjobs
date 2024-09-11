@@ -5,8 +5,12 @@ import SearchBar from "../components/Searchbar";
 
 export default async function Home() {
   const supabase = await createClient();
-  // todo dont select all fields, dont select inactive jobs
-  const { data: jobs } = await supabase.from("jobs").select();
+  const { data: jobs } = await supabase.from("jobs")
+    .select('categoryId, company, companyUrl, created_at, description, employmentType, highlight, id, jobUrl, listingType, location, title')
+    .eq('isVerified', true)
+    .eq('isDeleted', false)
+    .eq('isActive', true)
+    .order('id', { ascending: false });
 
   return (
     <main>

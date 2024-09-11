@@ -5,11 +5,11 @@ import { getCategoryNameById } from "../data/categories";
 import { useMemo, useState } from "react";
 import { useSearchFilter } from "../store/useSearchFilter";
 import { useFav } from "../store/useFav";
-import { Job } from "../types/supabaseTypes";
+import { ClientJob } from "../types/supabaseTypes";
 
 const itemsPerPage = 10;
 
-export default function JobTable({ jobs = [] }: { jobs: Job[] }) {
+export default function JobTable({ jobs }: { jobs: ClientJob[] }) {
   const searchParams = useSearchParams()
   const category = searchParams.get('category')
   const listingType = searchParams.get('listingType')

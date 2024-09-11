@@ -26,6 +26,7 @@ export type Database = {
           location: string | null
           title: string
           uuid: string
+          isDeleted: boolean | null
         }
         Insert: {
           categoryId: number
@@ -43,6 +44,7 @@ export type Database = {
           location?: string | null
           title: string
           uuid?: string
+          isDeleted?: boolean | null
         }
         Update: {
           categoryId?: number
@@ -60,6 +62,7 @@ export type Database = {
           location?: string | null
           title?: string
           uuid?: string
+          isDeleted?: boolean | null
         }
         Relationships: []
       }

@@ -6,7 +6,7 @@ export default async function DeletePage({ params: { uuid } }: { params: { uuid:
 
   const { error } = await supabase
     .from('jobs')
-    .delete()
+    .update({ isDeleted: true })
     .eq('uuid', uuid)
 
   return (
@@ -22,7 +22,6 @@ export default async function DeletePage({ params: { uuid } }: { params: { uuid:
           :
           <div>
             <p>Deine Anzeige wurde erfolgreich gelöscht.</p>
-            <p>Wir haben auch deine E-Mail-Adresse aus unserer Datenbank entfernt.</p>
           </div>
         }
       </div>

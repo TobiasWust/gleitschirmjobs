@@ -4,9 +4,10 @@ import { useMemo } from "react"
 import { getCategoryNameById } from "../data/categories";
 import { useFav } from "../store/useFav";
 import Link from "next/link";
-import { Job } from "../types/supabaseTypes";
+import { ClientJob } from "../types/supabaseTypes";
+import slugify from "slugify";
 
-export default function JobCard({ job }: { job: Job }) {
+export default function JobCard({ job }: { job: ClientJob }) {
   const toggleFav = useFav((state) => state.toggleFav);
   const favs = useFav((state) => state.favs);
 
@@ -20,7 +21,7 @@ export default function JobCard({ job }: { job: Job }) {
 
   return (
     <article>
-      <Link href={`/job/${job.id}`}>
+      <Link href={`/job/${job.id}/${slugify(job.company)}-${slugify(job.title)}`}>
         <div className={`card card-compact bg-base-100 w-full shadow-md ${job.highlight ? 'border-solid border-2 border-yellow-300' : ''} hover:shadow-secondary transition-shadow`}>
           <div className="card-body">
             <div className="flex justify-between">
