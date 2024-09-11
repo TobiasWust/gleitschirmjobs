@@ -21,8 +21,8 @@ export default function PostPage() {
           </div>
         ) : (
 
-          <form onSubmit={handleFormSubmit} name="post">
-            {/*  method="POST" netlify-honeypot="bot-field" data-netlify="true" */}
+          <form onSubmit={handleFormSubmit} name="post"
+            method="POST" netlify-honeypot="bot-field" data-netlify="true">
             <input type="hidden" name="form-name" value="post" />
             <div className="form-control">
               <label className="label">
