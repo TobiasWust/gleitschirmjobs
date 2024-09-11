@@ -6,7 +6,6 @@ import useFormSubmit from "../../hooks/useFormSubmit";
 
 export default function PostPage() {
   const { handleFormSubmit, error } = useFormSubmit();
-  const status = 'ok';
 
   return (
     <main className="py-4">
