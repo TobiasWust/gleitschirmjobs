@@ -5,7 +5,7 @@ import Link from "next/link";
 import useFormSubmit from "../../hooks/useFormSubmit";
 
 export default function PostPage() {
-  const { handleFormSubmit, error } = useFormSubmit();
+  const { handleFormSubmit, error, status } = useFormSubmit();
 
   return (
     <main className="py-4">
