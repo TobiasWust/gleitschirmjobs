@@ -1,8 +1,8 @@
 import mailer from "../utils/mailer";
 
 const template = (result) => `
-  <h1>Neue Anzeige auf Gleitschirmjobs.de</h1>
-  <p>Es wurde eine neue Anzeige auf Gleitschirmjobs.de erstellt:</p>
+  <h1>Neue Anzeige auf Gleitschirmjobs</h1>
+  <p>Es wurde eine neue Anzeige auf Gleitschirmjobs erstellt:</p>
   <hr>
   <p>categoryId: ${result.categoryId}</p>
   <p>company: ${result.company}</p>
@@ -28,7 +28,7 @@ const template = (result) => `
 const afterVerify = async ({ result }) => mailer.sendMail({
   from: '"Gleitschirmjobs" <kontakt@gleitschirmjobs.de>',
   to: "kontakt@tobiaswust.de",
-  subject: "Neue Anzeige auf Gleitschirmjobs.de von " + result.company,
+  subject: "Neue Anzeige auf Gleitschirmjobs von " + result.company,
   html: template(result),
 });
 

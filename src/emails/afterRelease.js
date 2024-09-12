@@ -1,13 +1,14 @@
 import mailer from "../utils/mailer";
 
 const template = (result) => `
-  <h1>Vielen Dank für deine Anzeige auf Gleitschirmjobs</h1>
-  <br>Bitte bestätige deine Anzeige, indem du auf den folgenden Link klickst:
-  <br><a href="https://gleitschirmjobs.de/verify/${result.uuid}">Anzeige bestätigen</a>
+  <h1>Anzeige auf Gleitschirmjobs veröffentlicht!</h1>
+  <br>Herzlichen Glückwünsch, die Anzeige wurde erfolgreich veröffentlicht.
+  <br>Die Anzeige ist nun für alle Besucher auf Gleitschirmjobs sichtbar.
+  <br>Wir wünschen dir viel Erfolg bei der Suche nach dem passenden Bewerber.
+  <br><br>Falls du die Anzeige löschen möchtest, kannst du dies jederzeit über den folgenden Link tun:
+  <br><a href="https://gleitschirmjobs.de/delete/${result.uuid}">Anzeige löschen</a>
   <br><br>Viel Erfolg!
   <br>Dein Gleitschirmjobs-Team
-  <br><br><small>Dies ist eine automatisch generierte E-Mail.</small>
-  <br>Solltest du diese E-Mail nicht erwartet haben, ignoriere sie einfach. Deine E-Mail-Adresse wird nicht gespeichert.
 `;
 
 const textTemplate = (result) => `
@@ -23,13 +24,14 @@ const textTemplate = (result) => `
   Solltest du diese E-Mail nicht erwartet haben, ignoriere sie einfach. Deine E-Mail-Adresse wird nicht gespeichert.</p>
 `;
 
-const afterPost = async ({ result }) => mailer.sendMail({
+
+const afterRelease = async ({ result }) => mailer.sendMail({
   from: '"Gleitschirmjobs" <kontakt@gleitschirmjobs.de>',
   to: result.email,
-  subject: "Bitte bestätige deine Anzeige auf Gleitschirmjobs",
+  subject: "Anzeige auf Gleitschirmjobs veröffentlicht!",
   text: textTemplate(result),
   html: template(result),
 });
 
-export default afterPost;
+export default afterRelease;
 
