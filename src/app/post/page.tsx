@@ -52,7 +52,7 @@ export default function PostPage() {
               <label className="label">
                 <span className="label-text">Website <span className="text-xs">(optional)</span></span>
               </label>
-              <input type="text" name="companyUrl" placeholder="Website" className="input input-bordered" maxLength={160} />
+              <input type="url" pattern="https?://.+" name="companyUrl" placeholder="https://beispiel.at" className="input input-bordered" maxLength={160} />
 
               <label className="label">
                 <span className="label-text">Ort <span className="text-xs">(optional)</span></span>
@@ -67,7 +67,7 @@ export default function PostPage() {
               <label className="label">
                 <span className="label-text">Externer Link zur Ausschreibung <span className="text-xs">(optional)</span></span>
               </label>
-              <input type="text" name="jobUrl" placeholder="Anzeigenlink" className="input input-bordered" maxLength={160} />
+              <input type="url" pattern="https?://.+" name="jobUrl" placeholder="https://beispiel.at" className="input input-bordered" maxLength={160} />
 
               <label className="label">
                 <span className="label-text">Kategorie</span>

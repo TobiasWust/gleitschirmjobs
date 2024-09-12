@@ -29,7 +29,6 @@ const afterVerify = async ({ result }) => mailer.sendMail({
   from: '"Gleitschirmjobs" <kontakt@gleitschirmjobs.de>',
   to: "kontakt@tobiaswust.de",
   subject: "Neue Anzeige auf Gleitschirmjobs.de von " + result.company,
-  text: TextTemplate(result),
   html: template(result),
 });
 
