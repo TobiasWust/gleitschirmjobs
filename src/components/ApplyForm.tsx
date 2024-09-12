@@ -31,7 +31,8 @@ export default function ApplyForm({ jobId, company }: { jobId: number, company: 
         <p className="text-sm">
           Diese Nachricht wird direkt an {company} gesendet.
         </p>
-        <button type="submit" className="btn btn-primary">Senden</button>
+        <button type="submit" className="btn btn-primary" disabled>Senden</button>
+        Sorry, das Formular ist noch nicht funktionsfähig. :)
       </div>
     </form>
   )
