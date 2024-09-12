@@ -38,7 +38,7 @@ const handleReq = async (req: Request) => {
           company: formData.company,
           companyUrl: formData.companyUrl,
           description: formData.description,
-          employmentType: [formData.fulltime === 'on' && 'Fulltime', formData.parttime === 'on' && 'Parttime', formData.freelance === 'on' && 'Freelance'].filter(Boolean),
+          employmentType: [formData.fulltime === 'on' && 'Vollzeit', formData.parttime === 'on' && 'Teilzeit', formData.freelance === 'on' && 'Freelance'].filter(Boolean),
           isActive: false,
           isVerified: false,
           jobUrl: formData.jobUrl,
@@ -51,10 +51,10 @@ const handleReq = async (req: Request) => {
       .select()
     logger.info(`Form name: ${formName}`);
     logger.info(`Form data: ${JSON.stringify(formData)}`);
-    logger.info(result);
-    logger.error(error);
+    logger.info({ result });
+    logger.error({ error });
 
-    const mailRes = mailer.sendMail({
+    const mailRes = await mailer.sendMail({
       from: '"Gleitschirmjobs" <kontakt@gleitschirmjobs.de>',
       to: formData.email,
       subject: "Bitte bestätige deine Anzeige auf Gleitschirmjobs.de",
@@ -62,7 +62,7 @@ const handleReq = async (req: Request) => {
       html: JSON.stringify(result),
     });
 
-    logger.info(mailRes);
+    logger.info({ mailRes });
 
   }
   return

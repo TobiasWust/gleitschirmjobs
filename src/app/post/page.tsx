@@ -21,7 +21,7 @@ export default function PostPage() {
           </div>
         ) : (
 
-          <form onSubmit={handleFormSubmit} name="post"
+          <form onSubmit={(e) => handleFormSubmit(e).then(() => document.querySelector('.alert-success')?.scrollIntoView())} name="post"
             method="POST" netlify-honeypot="bot-field" data-netlify="true">
             <input type="hidden" name="form-name" value="post" />
             <div className="form-control">
