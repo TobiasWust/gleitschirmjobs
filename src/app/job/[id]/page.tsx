@@ -1,25 +1,10 @@
 import { HiBuildingOffice, HiOutlineArrowTopRightOnSquare, HiUser } from "react-icons/hi2";
 import { getCategoryNameById } from "../../../data/categories";
-import { createClient } from "../../../utils/supabase/server";
+import { createClient, getJob } from "../../../utils/supabase/server";
 import ApplyForm from "../../../components/ApplyForm";
 
 export default async function Job({ params: { id } }: { params: { id: string } }) {
-  const supabase = await createClient();
-  const { data: job } = await supabase.from("jobs").select(`
-    categoryId,
-    company,
-    companyUrl,
-    created_at,
-    description,
-    employmentType,
-    highlight,
-    id,
-    isActive,
-    jobUrl,
-    listingType,
-    location,
-    title
-  `).eq("id", id).single();
+  const job = await getJob(id);
 
   if (!job) {
     return <div>Job {id} not found</div>

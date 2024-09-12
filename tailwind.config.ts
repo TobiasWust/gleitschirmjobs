@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss";
 import daisyui from "daisyui"
 import typography from "@tailwindcss/typography";
-import { dark } from "daisyui/src/theming/themes";
+import { dark, light } from "daisyui/src/theming/themes";
 
 const config: Config = {
   content: [
@@ -24,8 +24,16 @@ const config: Config = {
   ],
   daisyui: {
     themes: [
+      // {
+      //   myLight: {
+      //     ...light,
+      //     "primary": "#007F73",
+      //     "secondary": "#48eddd",
+      //     "accent": "#FFC700",
+      //   },
+      // },
       {
-        mytheme: {
+        myDark: {
           ...dark,
           "primary": "#48eddd",
           "secondary": "#007F73",
@@ -33,6 +41,7 @@ const config: Config = {
         },
       },
     ],
+    // darkTheme: "myDark"
   }
 };
 export default config;

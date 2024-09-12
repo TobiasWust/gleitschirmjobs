@@ -5,6 +5,7 @@ type FavStore = {
   favs: number[];
   addJobId: (jobId: number) => void;
   toggleFav: (jobId: number) => void;
+  cleanUpFavs: (activeJobIds: number[]) => void;
 };
 
 export const useFav = create(
@@ -21,6 +22,10 @@ export const useFav = create(
         } else {
           set({ favs: [...get().favs, jobId] })
         }
+      },
+      cleanUpFavs: (activeJobIds) => {
+        const favs = get().favs.filter((id) => activeJobIds.find((job) => job === id));
+        set({ favs });
       }
     }),
     {

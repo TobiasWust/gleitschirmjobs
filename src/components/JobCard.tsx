@@ -22,7 +22,7 @@ export default function JobCard({ job }: { job: ClientJob }) {
   return (
     <article>
       <Link href={`/job/${job.id}/${slugify(job.company)}-${slugify(job.title)}`}>
-        <div className={`card card-compact bg-base-100 w-full shadow-md ${job.highlight ? 'border-solid border-2 border-yellow-300' : ''} hover:shadow-secondary transition-shadow`}>
+        <div className={`card card-compact bg-base-200 w-full shadow-md ${job.highlight ? 'border-solid border-2 border-yellow-300' : ''} hover:shadow-secondary transition-shadow`}>
           <div className="card-body">
             <div className="flex justify-between">
               <h2 className="card-title flex-wrap">
@@ -47,8 +47,8 @@ export default function JobCard({ job }: { job: ClientJob }) {
                 }
               </div>
               <div className="card-actions">
-                <div className="tooltip tooltip-bottom" data-tip="Wird auf deinem Gerät gespeichert.">
-                  <button className="btn" onClick={handleFav}>{favs.includes(job.id) ? <HiStar className="text-yellow-300" /> : <HiOutlineStar />}Merken</button>
+                <div className="tooltip tooltip-bottom" data-tip="Wird auf deinem Gerät gemerkt.">
+                  <button className="btn btn-outline" onClick={handleFav}>{favs.includes(job.id) ? <HiStar className="text-yellow-300" /> : <HiOutlineStar />}Merken</button>
                 </div>
               </div>
             </div>
