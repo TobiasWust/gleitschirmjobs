@@ -34,5 +34,3 @@ export const useFav = create(
     },
   ),
 )
-
-// todo find solution for not active jobs (delete from favs)
