@@ -1,3 +1,5 @@
+import logger from "../../../utils/logger";
+import afterVerify from "../../../emails/afterVerify";
 import { createClient } from "../../../utils/supabase/server";
 
 export default async function VerifyPage({ params: { uuid } }: { params: { uuid: string } }) {
@@ -9,6 +11,15 @@ export default async function VerifyPage({ params: { uuid } }: { params: { uuid:
     .update({ isVerified: true })
     .eq('uuid', uuid)
     .select().single();
+
+  if (error) {
+    logger.error('Error updating job:', error);
+  } else {
+    logger.info('Job updated:', result);
+
+    const mailRes = await afterVerify({ result });
+    logger.info({ mailRes });
+  }
 
   return (
 

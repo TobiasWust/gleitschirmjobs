@@ -13,7 +13,7 @@ const template = (result) => `
 
 const afterPost = async ({ result }) => mailer.sendMail({
   from: '"Gleitschirmjobs" <kontakt@gleitschirmjobs.de>',
-  to: formData.email,
+  to: result.email,
   subject: "Bitte bestätige deine Anzeige auf Gleitschirmjobs.de",
   text: TextTemplate(result),
   html: template(result),
