@@ -2,7 +2,7 @@
 import JobCard from "./JobCard";
 import { useSearchParams } from 'next/navigation'
 import { getCategoryNameById } from "../data/categories";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useSearchFilter } from "../store/useSearchFilter";
 import { useFav } from "../store/useFav";
 import { ClientJob } from "../types/supabaseTypes";
@@ -15,6 +15,7 @@ export default function JobTable({ jobs }: { jobs: ClientJob[] }) {
   const listingType = searchParams.get('listingType')
 
   const favs = useFav((state) => state.favs);
+  const cleanUpFavs = useFav((state) => state.cleanUpFavs);
   const searchText = useSearchFilter((state) => state.searchText);
   const onlyFavs = useSearchFilter((state) => state.onlyFavs);
 
@@ -23,6 +24,10 @@ export default function JobTable({ jobs }: { jobs: ClientJob[] }) {
   const handlePage = (page: number) => {
     setPage(page);
   }
+
+  useEffect(() => {
+    cleanUpFavs(jobs.map((job) => job.id));
+  }, [jobs, cleanUpFavs]);
 
   const filteredJobs = useMemo(() =>
     jobs
