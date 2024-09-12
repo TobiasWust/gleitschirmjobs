@@ -1,6 +1,7 @@
 import { createClient } from "@supabase/supabase-js";
 import pino from "pino";
 import nodemailer from "nodemailer";
+import afterPost from "../../src/emails/afterPost";
 
 const logger = pino();
 
@@ -54,13 +55,7 @@ const handleReq = async (req: Request) => {
     logger.info({ result });
     logger.error({ error });
 
-    const mailRes = await mailer.sendMail({
-      from: '"Gleitschirmjobs" <kontakt@gleitschirmjobs.de>',
-      to: formData.email,
-      subject: "Bitte bestätige deine Anzeige auf Gleitschirmjobs.de",
-      text: JSON.stringify(result),
-      html: JSON.stringify(result),
-    });
+    const mailRes = await afterPost({ result });
 
     logger.info({ mailRes });
 
