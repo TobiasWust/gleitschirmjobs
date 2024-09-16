@@ -16,17 +16,17 @@ export default async function Job({ params: { id } }: { params: { id: string } }
     <main className="py-4">
       <div className="bg-base-200 rounded-2xl p-4 grid gap-4">
         <div className="flex justify-between">
-          <h2 className="card-title flex-wrap">
+          <h2 className="card-title flex-wrap text-primary">
             {job.listingType === 'search' ?
               <HiBuildingOffice /> :
               <HiUser />
             }
-            {job.title}<span className="badge badge-xs badge-primary">{category}</span>
+            {job.title}<span className="badge badge-xs">{category}</span>
           </h2>
           <div>{new Date(job.created_at).toLocaleDateString('de')}</div>
         </div>
         <div className="flex gap-4">
-          <h3 className='font-semibold'>{
+          <h3 className='font-semibold text-primary'>{
             job.companyUrl ? <a className="link" href={job.companyUrl} target="_blank" rel="noreferrer">{job.company}</a> : job.company
           }</h3>
           <h4 className="text-primary">{job.location}</h4>

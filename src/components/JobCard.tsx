@@ -25,12 +25,12 @@ export default function JobCard({ job }: { job: ClientJob }) {
         <div className={`card card-compact bg-base-200 w-full shadow-md ${job.highlight ? 'border-solid border-2 border-yellow-300' : ''} hover:shadow-secondary transition-shadow`}>
           <div className="card-body">
             <div className="flex justify-between">
-              <h2 className="card-title flex-wrap">
+              <h2 className="card-title flex-wrap text-primary">
                 {job.listingType === 'search' ?
                   <HiBuildingOffice /> :
                   <HiUser />
                 }
-                {job.title}<span className="badge badge-xs badge-primary">{category}</span></h2>
+                {job.title}<span className="badge badge-xs">{category}</span></h2>
               <div className="text-xs">{new Date(job.created_at).toLocaleDateString('de')}</div>
             </div>
             <div className="flex gap-4">

@@ -36,7 +36,7 @@ export default function RootLayout({
         <MobileFilter>
           <Header />
           <Filterbar />
-          <div className="max-w-screen-xl lg:mx-auto p-4 lg:p-0 grid lg:grid-cols-4 gap-4">
+          <div className="max-w-screen-xl lg:mx-auto p-4 xl:p-0 grid lg:grid-cols-4 gap-4">
             <div className="col-span-3">
               {children}
             </div>

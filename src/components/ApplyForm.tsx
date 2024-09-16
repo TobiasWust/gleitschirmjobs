@@ -11,7 +11,7 @@ export default function ApplyForm({ jobId, company }: { jobId: number, company: 
         Vielen Dank für deine Nachricht. Wir haben deine Nachricht an {company} gesendet.
       </div>
     ) : (
-      <form className="md:w-1/2 m-auto" onSubmit={handleFormSubmit} name="apply" method="POST" netlify-honeypot="bot-field" data-netlify="true">
+      <form onSubmit={handleFormSubmit} name="apply" method="POST" netlify-honeypot="bot-field" data-netlify="true">
         <input type="hidden" name="form-name" value="apply" />
         <input type="hidden" name="jobId" value={jobId} />
         <label className="form-control w-full">
