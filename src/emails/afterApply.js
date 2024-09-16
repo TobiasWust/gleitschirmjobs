@@ -23,7 +23,7 @@ const textTemplate = (result) => `
   Mit besten Grüßen,<br>Dein Team von Gleitschirmjobs
 `;
 
-const afterPost = async ({ result }) => mailer.sendMail({
+const afterApply = async ({ result }) => mailer.sendMail({
   from: '"Gleitschirmjobs" <kontakt@gleitschirmjobs.de>',
   to: result.email,
   replyTo: result.email,
@@ -32,5 +32,5 @@ const afterPost = async ({ result }) => mailer.sendMail({
   html: template(result),
 });
 
-export default afterPost;
+export default afterApply;
 

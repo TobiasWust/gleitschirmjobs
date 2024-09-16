@@ -73,7 +73,7 @@ const handleReq = async (req: Request) => {
       return new Response("Error", { status: 500 });
     }
 
-    const mailRes = await afterPost({ result });
+    const mailRes = await afterApply({ result });
 
     logger.info({ mailRes });
 
