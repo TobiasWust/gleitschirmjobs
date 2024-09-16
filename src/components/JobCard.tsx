@@ -46,7 +46,7 @@ export default function JobCard({ job }: { job: ClientJob }) {
                   job.employmentType?.map((type) => <div className="badge badge-outline" key={type}>{type}</div>)
                 }
               </div>
-              <div className="card-actions">
+              <div className="card-actions justify-end flex-1">
                 <div className="tooltip tooltip-bottom" data-tip="Wird auf deinem Gerät gemerkt.">
                   <button className="btn btn-outline" onClick={handleFav}>{favs.includes(job.id) ? <HiStar className="text-yellow-300" /> : <HiOutlineStar />}Merken</button>
                 </div>
