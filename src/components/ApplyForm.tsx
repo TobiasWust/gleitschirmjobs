@@ -8,7 +8,7 @@ export default function ApplyForm({ jobId, company }: { jobId: number, company: 
   return (
     status === 'ok' ? (
       <div className="alert alert-success">
-        Vielen Dank für deine Anzeige! Du solltest in Kürze eine E-Mail zur Verifizierung erhalten.
+        Vielen Dank für deine Nachricht. Wir haben deine Nachricht an {company} gesendet.
       </div>
     ) : (
       <form className="md:w-1/2 m-auto" onSubmit={handleFormSubmit} name="apply" method="POST" netlify-honeypot="bot-field" data-netlify="true">

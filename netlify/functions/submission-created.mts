@@ -10,7 +10,7 @@ const handleReq = async (req: Request) => {
   const data = await req.json();
   const formName = data.payload.form_name;
 
-  if (formName !== "post") {
+  if (!["post", "apply"].includes(formName)) {
     return
   }
 
@@ -41,6 +41,29 @@ const handleReq = async (req: Request) => {
         },
       ])
       .select().single();
+    logger.info(`Form name: ${formName}`);
+    logger.info(`Form data: ${JSON.stringify(formData)}`);
+    logger.info({ result });
+
+    if (error) {
+      logger.error({ error });
+      return new Response("Error", { status: 500 });
+    }
+
+    const mailRes = await afterPost({ result });
+
+    logger.info({ mailRes });
+
+  }
+
+  if (formName === 'apply') {
+    const formData = data.payload.data;
+
+    const { data: result, error } = await supabase
+      .from('jobs')
+      .select()
+      .eq('id', formData.jobId)
+      .single();
     logger.info(`Form name: ${formName}`);
     logger.info(`Form data: ${JSON.stringify(formData)}`);
     logger.info({ result });
