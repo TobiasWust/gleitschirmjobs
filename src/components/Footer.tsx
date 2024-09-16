@@ -13,10 +13,10 @@ export default function Footer() {
         </nav>
         <nav>
           <h6 className="footer-title">Informationen</h6>
-          <a className="link link-hover">Über</a>
+          {/* <a className="link link-hover">Über</a> */}
           <Link href="/contact" className="link link-hover">Kontakt</Link>
-          <a className="link link-hover">Datenschutz</a>
-          <a className="link link-hover">Impressum</a>
+          <Link href="/privacy" className="link link-hover">Datenschutz</Link>
+          <Link href="/imprint" className="link link-hover">Impressum</Link>
         </nav>
       </footer>
       <footer className="bg-neutral text-neutral-content p-4 text-center">
