@@ -6,6 +6,26 @@ export default async function VerifyPage({ params: { uuid } }: { params: { uuid:
 
   const supabase = await createClient();
 
+  const { data: isVerified } = await supabase
+    .from('jobs')
+    .select('isVerified')
+    .eq('uuid', uuid)
+    .single();
+
+  if (isVerified) {
+    return (
+      <main className="py-4">
+        <div className="bg-base-200 rounded-2xl p-4 grid gap-4">
+          <div className="flex justify-between">
+            <h1 className="card-title flex-wrap">Vielen Dank</h1>
+          </div>
+          <p>Deine Emailadresse wurde bereits bestätigt.</p>
+          <p>Als nächstes werden wir deine Anzeige prüfen und dich informieren, sobald sie online ist.</p>
+        </div>
+      </main>
+    );
+  }
+
   const { data: result, error } = await supabase
     .from('jobs')
     .update({ isVerified: true })

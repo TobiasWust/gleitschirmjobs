@@ -6,6 +6,25 @@ export default async function WuRelease({ params: { uuid } }: { params: { uuid: 
 
   const supabase = await createClient();
 
+  const { data: isActive } = await supabase
+    .from('jobs')
+    .select('isActive')
+    .eq('uuid', uuid)
+    .single();
+
+  if (isActive) {
+    return (
+      <main className="py-4">
+        <div className="bg-base-200 rounded-2xl p-4 grid gap-4">
+          <div className="flex justify-between">
+            <h1 className="card-title flex-wrap">Anzeige Veröffentlicht</h1>
+          </div>
+          <p>Die Anzeige wurde bereits veröffentlicht.</p>
+        </div>
+      </main>
+    );
+  }
+
   const { data: result, error } = await supabase
     .from('jobs')
     .update({ isActive: true })
