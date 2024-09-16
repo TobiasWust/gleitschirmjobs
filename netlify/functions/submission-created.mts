@@ -1,3 +1,5 @@
+// using submission-created webhook from netlify forms because it will filter out spam
+
 import { createClient } from "@supabase/supabase-js";
 import pino from "pino";
 import afterPost from "../../src/emails/afterPost";
@@ -42,14 +44,18 @@ const handleReq = async (req: Request) => {
     logger.info(`Form name: ${formName}`);
     logger.info(`Form data: ${JSON.stringify(formData)}`);
     logger.info({ result });
-    logger.error({ error });
+
+    if (error) {
+      logger.error({ error });
+      return new Response("Error", { status: 500 });
+    }
 
     const mailRes = await afterPost({ result });
 
     logger.info({ mailRes });
 
   }
-  return
+  return new Response("OK", { status: 200 });
 }
 
 
