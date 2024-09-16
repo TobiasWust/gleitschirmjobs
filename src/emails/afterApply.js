@@ -2,34 +2,38 @@
 
 import mailer from "../utils/mailer";
 
-const template = (result) => `
-  <p>${result.name} hat dir eine Nachricht auf Gleitschirmjobs geschickt:</p>
+const template = (job, formData) => `
+  <p>${formData.name} hat dir eine Nachricht auf Gleitschirmjobs geschickt.</p>
+  <p>Deine Anzeige: <a href="https://www.gleitschirmjobs.de/${job.id}">${job.title}</a></p>
   <ul>
-    <li><strong>Name:</strong> ${result.name}</li>
-    <li><strong>Email:</strong> ${result.email}</li>
-    <li><strong>Nachricht:</strong> ${result.message}</li>
+    <li><strong>Name:</strong> ${formData.name}</li>
+    <li><strong>Email:</strong> ${formData.email}</li>
+    <li><strong>Nachricht:</strong> ${formData.message}</li>
   </ul>
 
   <p>Mit besten Grüßen,<br>Dein Team von Gleitschirmjobs</p>
 `;
 
-const textTemplate = (result) => `
-  ${result.name} hat dir eine Nachricht auf Gleitschirmjobs geschickt:
+const textTemplate = (job, formData) => `
+  ${formData.name} hat dir eine Nachricht auf Gleitschirmjobs geschickt.
+  Deine Anzeige: ${job.title}
+  https://www.gleitschirmjobs.de/${job.id}
   
-    <strong>Name:</strong> ${result.name}
-    <strong>Email:</strong> ${result.email}
-    <strong>Nachricht:</strong> ${result.message}
+    Name: ${formData.name}
+    Email: ${formData.email}
+    Nachricht: ${formData.message}
   
-  Mit besten Grüßen,<br>Dein Team von Gleitschirmjobs
+  Mit besten Grüßen,
+  Dein Team von Gleitschirmjobs
 `;
 
-const afterApply = async ({ result }) => mailer.sendMail({
+const afterApply = async ({ job, formData }) => mailer.sendMail({
   from: '"Gleitschirmjobs" <kontakt@gleitschirmjobs.de>',
-  to: result.email,
-  replyTo: result.email,
-  subject: `Neue Nachricht von ${result.name} auf Gleitschirmjobs`,
-  text: textTemplate(result),
-  html: template(result),
+  to: job.email,
+  replyTo: formData.email,
+  subject: `Neue Nachricht von ${formData.name} auf Gleitschirmjobs`,
+  text: textTemplate(job, formData),
+  html: template(job, formData),
 });
 
 export default afterApply;

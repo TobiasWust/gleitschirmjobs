@@ -3,6 +3,7 @@
 import { createClient } from "@supabase/supabase-js";
 import pino from "pino";
 import afterPost from "../../src/emails/afterPost";
+import afterApply from "../../src/emails/afterApply";
 
 const logger = pino();
 
@@ -73,7 +74,7 @@ const handleReq = async (req: Request) => {
       return new Response("Error", { status: 500 });
     }
 
-    const mailRes = await afterApply({ result });
+    const mailRes = await afterApply({ job: result, formData });
 
     logger.info({ mailRes });
 
