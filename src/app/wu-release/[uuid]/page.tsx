@@ -6,13 +6,13 @@ export default async function WuRelease({ params: { uuid } }: { params: { uuid: 
 
   const supabase = await createClient();
 
-  const { data: isActive } = await supabase
+  const { data: isActiveData } = await supabase
     .from('jobs')
     .select('isActive')
     .eq('uuid', uuid)
     .single();
 
-  if (isActive) {
+  if (isActiveData?.isActive) {
     return (
       <main className="py-4">
         <div className="bg-base-200 rounded-2xl p-4 grid gap-4">

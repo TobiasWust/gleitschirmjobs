@@ -6,13 +6,13 @@ export default async function VerifyPage({ params: { uuid } }: { params: { uuid:
 
   const supabase = await createClient();
 
-  const { data: isVerified } = await supabase
+  const { data: isVerifiedData } = await supabase
     .from('jobs')
     .select('isVerified')
     .eq('uuid', uuid)
     .single();
 
-  if (isVerified) {
+  if (isVerifiedData?.isVerified) {
     return (
       <main className="py-4">
         <div className="bg-base-200 rounded-2xl p-4 grid gap-4">

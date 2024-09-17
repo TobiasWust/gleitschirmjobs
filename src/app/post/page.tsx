@@ -46,7 +46,7 @@ export default function PostPage() {
           </div>
         ) : (
 
-          <form onSubmit={(e) => handleFormSubmit(e).then(() => document.querySelector('.alert-success')?.scrollIntoView())} name="post"
+          <form onSubmit={(e) => handleFormSubmit(e).then(() => document.querySelector('main')?.scrollIntoView())} name="post"
             method="POST" netlify-honeypot="bot-field" data-netlify="true">
             <input type="hidden" name="form-name" value="post" />
             <div className="form-control">
@@ -171,6 +171,10 @@ export default function PostPage() {
                 <p className="text-xs text-slate-400">Die E-Mail-Adresse wird nicht veröffentlicht.</p>
                 <p className="text-xs text-slate-400">Bewerbungen werden direkt an die angegebene E-Mail-Adresse gesendet.</p>
               </div>
+
+              <p>
+                <p className="text-sm">Deine Eingaben werden auf diesem Gerät gespeichert.</p>
+              </p>
 
               <button className="btn btn-primary mt-4" type="submit" disabled={status === 'pending'}>Senden</button>
               {status === 'error' && (
