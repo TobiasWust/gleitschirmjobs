@@ -1,7 +1,7 @@
 'use client';
 
 import useFormSubmit from "../hooks/useFormSubmit";
-import applyStore from "../utils/applyStore";
+import applyStore from "../store/applyStore";
 
 export default function ApplyForm({ jobId, company }: { jobId: number, company: string }) {
   const { handleFormSubmit, error, status } = useFormSubmit();

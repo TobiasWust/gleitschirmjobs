@@ -1,7 +1,28 @@
+'use client';
 import Link from "next/link";
+import { useEffect } from "react";
 import { GiHearts } from "react-icons/gi";
+import { HiMiniMoon, HiMiniSun } from "react-icons/hi2";
+import themeStore from "../store/themeStore";
 
 export default function Footer() {
+  const theme = themeStore((state) => state.theme);
+  const setTheme = themeStore((state) => state.setTheme);
+
+  const handleThemeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setTheme(e.target.checked ? 'myDark' : 'myLight');
+  }
+
+  useEffect(() => {
+    if (theme === 'myDark') {
+      document.querySelector('html')?.setAttribute("data-theme", "myDark");
+    } else if (theme === 'myLight') {
+      document.querySelector('html')?.setAttribute("data-theme", "myLight");
+    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+      document.querySelector('html')?.setAttribute("data-theme", "myDark");
+    }
+  }, [theme]);
+
   return (
     <>
       <footer className="footer justify-center bg-neutral text-neutral-content p-10 mt-4">
@@ -20,6 +41,19 @@ export default function Footer() {
         </nav>
       </footer>
       <footer className="bg-neutral text-neutral-content p-4 text-center">
+        <p>
+          <button className="btn btn-square btn-ghost">
+            <label className="swap swap-rotate w-12 h-12">
+              <input type="checkbox"
+                className="swap-checkbox"
+                onChange={handleThemeChange}
+                checked={theme === 'myDark'}
+              />
+              <HiMiniSun className="w-8 h-8 swap-on" />
+              <HiMiniMoon className="w-8 h-8 swap-off" />
+            </label>
+          </button>
+        </p>
         <p>
           Copyright © 2024 - Made with <GiHearts className="inline-block text-wuorange" /> by <a className="link" rel="noopener noreferrer" target="_blank" href="https://www.wust.dev">Wust</a>
         </p>
