@@ -1,5 +1,5 @@
 'use client';
-import JobCard from "./JobCard";
+// import JobCard from "./JobCard";
 import { useSearchParams } from 'next/navigation'
 import { getCategoryNameById } from "../data/categories";
 import { useEffect, useMemo, useState } from "react";
@@ -84,17 +84,16 @@ export default function JobTable({ jobs }: { jobs: ClientJob[] }) {
 
   const pageCount = Math.ceil(filteredJobs.length / itemsPerPage);
 
-  return <div>{JSON.stringify(jobs)}</div>
-
   return (
     <div>
       <p className="text-neutral-content mb-4">
-        {filteredJobs.length} Anzeigen gefunden
+        {/* {filteredJobs.length} Anzeigen gefunden */}
       </p>
       <div className="flex gap-4 flex-col">
         {
           jobs.map((job) =>
-            <JobCard key={job.id} job={job} />
+            <p key={job.id}>{job.title}</p>
+            // <JobCard key={job.id} job={job} />
           )
         }
         <div className="join">
