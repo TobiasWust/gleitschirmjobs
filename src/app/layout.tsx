@@ -1,23 +1,11 @@
 import type { Metadata } from "next";
 import { GoogleAnalytics } from '@next/third-parties/google'
-import localFont from "next/font/local";
 import "./globals.css";
 import Footer from "../components/Footer";
 // import Filterbar from "../components/Filterbar";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
 // import MobileFilter from "../components/MobileFilter";
-
-const geistSans = localFont({
-  src: "./fonts/GeistVF.woff",
-  variable: "--font-geist-sans",
-  weight: "100 900",
-});
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
 
 export const metadata: Metadata = {
   title: "Gleitschirmjobs - Die Jobbörse für Gleitschirmfliegende.",
@@ -32,7 +20,7 @@ export default function RootLayout({
   return (
     <html lang="de">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className="antialiased"
       >
         {/* <MobileFilter> */}
         <Header />
