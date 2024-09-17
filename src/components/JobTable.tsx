@@ -80,14 +80,12 @@ export default function JobTable({ jobs }: { jobs: ClientJob[] }) {
     return filteredJobs.slice(start, end);
   }, [filteredJobs, page]);
 
-  console.log('paginatedJobs:', paginatedJobs);
-
   const pageCount = Math.ceil(filteredJobs.length / itemsPerPage);
 
   return (
     <div>
       <p className="text-neutral-content mb-4">
-        {/* {filteredJobs.length} Anzeigen gefunden */}
+        {filteredJobs.length} Anzeigen gefunden
       </p>
       <div className="flex gap-4 flex-col">
         {
