@@ -1,5 +1,5 @@
 'use client';
-// import JobCard from "./JobCard";
+import JobCard from "./JobCard";
 import { useSearchParams } from 'next/navigation'
 import { getCategoryNameById } from "../data/categories";
 import { useEffect, useMemo, useState } from "react";
@@ -90,8 +90,7 @@ export default function JobTable({ jobs }: { jobs: ClientJob[] }) {
       <div className="flex gap-4 flex-col">
         {
           paginatedJobs.map((job) =>
-            <p key={job.id}>{job.title}</p>
-            // <JobCard key={job.id} job={job} />
+            <JobCard key={job.id} job={job} />
           )
         }
         <div className="join">
