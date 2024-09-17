@@ -1,23 +1,23 @@
 'use client';
 import JobCard from "./JobCard";
-import { useSearchParams } from 'next/navigation'
-import { getCategoryNameById } from "../data/categories";
+// import { useSearchParams } from 'next/navigation'
+// import { getCategoryNameById } from "../data/categories";
 import { useEffect, useMemo, useState } from "react";
-import { useSearchFilter } from "../store/useSearchFilter";
+// import { useSearchFilter } from "../store/useSearchFilter";
 import { useFav } from "../store/useFav";
 import { ClientJob } from "../types/supabaseTypes";
 
 const itemsPerPage = 10;
 
 export default function JobTable({ jobs }: { jobs: ClientJob[] }) {
-  const searchParams = useSearchParams()
-  const category = searchParams.get('category')
-  const listingType = searchParams.get('listingType')
+  // const searchParams = useSearchParams()
+  // const category = searchParams.get('category')
+  // const listingType = searchParams.get('listingType')
 
-  const favs = useFav((state) => state.favs);
+  // const favs = useFav((state) => state.favs);
   const cleanUpFavs = useFav((state) => state.cleanUpFavs);
-  const searchText = useSearchFilter((state) => state.searchText);
-  const onlyFavs = useSearchFilter((state) => state.onlyFavs);
+  // const searchText = useSearchFilter((state) => state.searchText);
+  // const onlyFavs = useSearchFilter((state) => state.onlyFavs);
 
   const [page, setPage] = useState(1);
 
@@ -31,48 +31,49 @@ export default function JobTable({ jobs }: { jobs: ClientJob[] }) {
 
   const filteredJobs = useMemo(() =>
     jobs
-      // onlyFavs filter
-      .filter((job) => {
-        if (onlyFavs) {
-          return favs.includes(job.id)
-        }
-        return true
-      })
-      // listing type filter
-      .filter((job) => {
-        if (listingType) {
-          return job.listingType === listingType
-        }
-        return true
-      })
-      // category filter
-      .filter((job) => {
-        if (category) {
-          const jobCategory = getCategoryNameById(job.categoryId);
-          return jobCategory === category
-        }
-        return true
-      })
-      // searchText filter
-      .filter(job => {
-        return Object.values(job).some(value => {
-          if (Array.isArray(value)) {
-            return value.some(val => val.toLowerCase().includes(searchText.toLowerCase()));
-          }
-          return String(value).toLowerCase().includes(searchText.toLowerCase());
-        })
-      })
-      // highlights first
-      .sort((a, b) => {
-        if (a.highlight && !b.highlight) {
-          return -1;
-        }
-        if (!a.highlight && b.highlight) {
-          return 1;
-        }
-        return 0;
-      })
-    , [category, searchText, onlyFavs, favs, listingType, jobs]);
+    // onlyFavs filter
+    // .filter((job) => {
+    //   if (onlyFavs) {
+    //     return favs.includes(job.id)
+    //   }
+    //   return true
+    // })
+    // listing type filter
+    // .filter((job) => {
+    //   if (listingType) {
+    //     return job.listingType === listingType
+    //   }
+    //   return true
+    // })
+    // category filter
+    // .filter((job) => {
+    //   if (category) {
+    //     const jobCategory = getCategoryNameById(job.categoryId);
+    //     return jobCategory === category
+    //   }
+    //   return true
+    // })
+    // searchText filter
+    // .filter(job => {
+    //   return Object.values(job).some(value => {
+    //     if (Array.isArray(value)) {
+    //       return value.some(val => val.toLowerCase().includes(searchText.toLowerCase()));
+    //     }
+    //     return String(value).toLowerCase().includes(searchText.toLowerCase());
+    //   })
+    // })
+    // highlights first
+    // .sort((a, b) => {
+    //   if (a.highlight && !b.highlight) {
+    //     return -1;
+    //   }
+    //   if (!a.highlight && b.highlight) {
+    //     return 1;
+    //   }
+    //   return 0;
+    // })
+    , [jobs]);
+  // , [category, searchText, onlyFavs, favs, listingType, jobs]);
 
   const paginatedJobs = useMemo(() => {
     const start = (page - 1) * itemsPerPage;
