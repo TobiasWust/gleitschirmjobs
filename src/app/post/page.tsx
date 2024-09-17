@@ -3,9 +3,34 @@ import { HiBuildingOffice, HiUser } from "react-icons/hi2";
 import categories from "../../data/categories";
 import Link from "next/link";
 import useFormSubmit from "../../hooks/useFormSubmit";
+import postStore from "../../utils/postStore";
 
 export default function PostPage() {
   const { handleFormSubmit, error, status } = useFormSubmit();
+  const categoryId = postStore((state) => state.categoryId);
+  const company = postStore((state) => state.company);
+  const companyUrl = postStore((state) => state.companyUrl);
+  const jobUrl = postStore((state) => state.jobUrl);
+  const listingType = postStore((state) => state.listingType);
+  const location = postStore((state) => state.location);
+  const title = postStore((state) => state.title);
+  const message = postStore((state) => state.message);
+  const email = postStore((state) => state.email);
+  const fulltime = postStore((state) => state.fulltime);
+  const parttime = postStore((state) => state.parttime);
+  const freelance = postStore((state) => state.freelance);
+  const setCategoryId = postStore((state) => state.setCategoryId);
+  const setCompany = postStore((state) => state.setCompany);
+  const setCompanyUrl = postStore((state) => state.setCompanyUrl);
+  const setJobUrl = postStore((state) => state.setJobUrl);
+  const setListingType = postStore((state) => state.setListingType);
+  const setLocation = postStore((state) => state.setLocation);
+  const setTitle = postStore((state) => state.setTitle);
+  const setMessage = postStore((state) => state.setMessage);
+  const setEmail = postStore((state) => state.setEmail);
+  const setFulltime = postStore((state) => state.setFulltime);
+  const setParttime = postStore((state) => state.setParttime);
+  const setFreelance = postStore((state) => state.setFreelance);
 
   return (
     <main className="py-4">
@@ -30,11 +55,17 @@ export default function PostPage() {
               </label>
               <div className="flex gap-2">
                 <label className="label cursor-pointer">
-                  <input type="radio" defaultChecked name="listingType" value="search" className="radio" />
+                  <input type="radio" name="listingType" value="search" className="radio"
+                    onChange={(e) => setListingType(e.target.value)}
+                    checked={listingType === 'search'}
+                  />
                   <span className="label-text pl-1"><HiBuildingOffice className="inline-block" /> Arbeitgebend</span>
                 </label>
                 <label className="label cursor-pointer">
-                  <input type="radio" name="listingType" value="offer" className="radio" />
+                  <input type="radio" name="listingType" value="offer" className="radio"
+                    onChange={(e) => setListingType(e.target.value)}
+                    checked={listingType === 'offer'}
+                  />
                   <span className="label-text pl-1"><HiUser className="inline-block" /> Arbeitend</span>
                 </label>
               </div>
@@ -42,37 +73,58 @@ export default function PostPage() {
               <label className="label">
                 <span className="label-text">Titel der Anzeige</span>
               </label>
-              <input type="text" name="title" placeholder="Titel" required className="input input-bordered" maxLength={160} />
+              <input type="text" name="title" placeholder="Titel" required className="input input-bordered" maxLength={160}
+                onChange={(e) => setTitle(e.target.value)}
+                value={title}
+              />
 
               <label className="label">
                 <span className="label-text">Dein Name oder Unternehmen</span>
               </label>
-              <input type="text" name="company" placeholder="Name" required className="input input-bordered" maxLength={160} />
+              <input type="text" name="company" placeholder="Name" required className="input input-bordered" maxLength={160}
+                onChange={(e) => setCompany(e.target.value)}
+                value={company}
+              />
 
               <label className="label">
                 <span className="label-text">Website <span className="text-xs">(optional)</span></span>
               </label>
-              <input type="url" pattern="https?://.+" name="companyUrl" placeholder="https://beispiel.at" className="input input-bordered" maxLength={160} />
+              <input type="url" pattern="https?://.+" name="companyUrl" placeholder="https://beispiel.at" className="input input-bordered" maxLength={160}
+                onChange={(e) => setCompanyUrl(e.target.value)}
+                value={companyUrl}
+              />
 
               <label className="label">
                 <span className="label-text">Ort <span className="text-xs">(optional)</span></span>
               </label>
-              <input type="text" name="location" placeholder="Ort" className="input input-bordered" maxLength={60} />
+              <input type="text" name="location" placeholder="Ort" className="input input-bordered" maxLength={60}
+                onChange={(e) => setLocation(e.target.value)}
+                value={location}
+              />
 
               <label className="label">
                 <span className="label-text">Anzeigentext</span>
               </label>
-              <textarea placeholder="Beschreibung" name="description" required rows={5} className="textarea textarea-bordered" maxLength={5000}></textarea>
+              <textarea placeholder="Beschreibung" name="description" required rows={5} className="textarea textarea-bordered" maxLength={5000}
+                onChange={(e) => setMessage(e.target.value)}
+                value={message}
+              ></textarea>
 
               <label className="label">
                 <span className="label-text">Externer Link zur Ausschreibung <span className="text-xs">(optional)</span></span>
               </label>
-              <input type="url" pattern="https?://.+" name="jobUrl" placeholder="https://beispiel.at" className="input input-bordered" maxLength={160} />
+              <input type="url" pattern="https?://.+" name="jobUrl" placeholder="https://beispiel.at" className="input input-bordered" maxLength={160}
+                onChange={(e) => setJobUrl(e.target.value)}
+                value={jobUrl}
+              />
 
               <label className="label">
                 <span className="label-text">Kategorie</span>
               </label>
-              <select className="select select-bordered" name="categoryId" required>
+              <select className="select select-bordered" name="categoryId" required
+                onChange={(e) => setCategoryId(Number(e.target.value))}
+                value={categoryId}
+              >
                 {
                   categories.map((category) => (
                     <option value={category.id} key={category.id}>{category.name}</option>
@@ -85,15 +137,24 @@ export default function PostPage() {
               </label>
               <div className="flex gap-2">
                 <label className="label cursor-pointer">
-                  <input type="checkbox" name="fulltime" className="checkbox" />
+                  <input type="checkbox" name="fulltime" className="checkbox"
+                    onChange={(e) => setFulltime(e.target.checked)}
+                    checked={fulltime}
+                  />
                   <span className="label-text pl-1">Vollzeit</span>
                 </label>
                 <label className="label cursor-pointer">
-                  <input type="checkbox" name="parttime" className="checkbox" />
+                  <input type="checkbox" name="parttime" className="checkbox"
+                    onChange={(e) => setParttime(e.target.checked)}
+                    checked={parttime}
+                  />
                   <span className="label-text pl-1">Teilzeit</span>
                 </label>
                 <label className="label cursor-pointer">
-                  <input type="checkbox" name="freelance" className="checkbox" />
+                  <input type="checkbox" name="freelance" className="checkbox"
+                    onChange={(e) => setFreelance(e.target.checked)}
+                    checked={freelance}
+                  />
                   <span className="label-text pl-1">Freelance</span>
                 </label>
               </div>
@@ -101,7 +162,10 @@ export default function PostPage() {
               <label className="label">
                 <span className="label-text">E-Mail</span>
               </label>
-              <input type="email" name="email" placeholder="E-Mail" required className="input input-bordered" maxLength={160} />
+              <input type="email" name="email" placeholder="E-Mail" required className="input input-bordered" maxLength={160}
+                onChange={(e) => setEmail(e.target.value)}
+                value={email}
+              />
 
               <div className="p-4">
                 <p className="text-xs text-slate-400">Die E-Mail-Adresse wird nicht veröffentlicht.</p>
