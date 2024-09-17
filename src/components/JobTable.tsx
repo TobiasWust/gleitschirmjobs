@@ -84,6 +84,8 @@ export default function JobTable({ jobs }: { jobs: ClientJob[] }) {
 
   const pageCount = Math.ceil(filteredJobs.length / itemsPerPage);
 
+  return <div>{JSON.stringify(jobs)}</div>
+
   return (
     <div>
       <p className="text-neutral-content mb-4">
