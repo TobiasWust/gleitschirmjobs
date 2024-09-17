@@ -3,10 +3,10 @@ import { GoogleAnalytics } from '@next/third-parties/google'
 import localFont from "next/font/local";
 import "./globals.css";
 import Footer from "../components/Footer";
-import Filterbar from "../components/Filterbar";
+// import Filterbar from "../components/Filterbar";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
-import MobileFilter from "../components/MobileFilter";
+// import MobileFilter from "../components/MobileFilter";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
