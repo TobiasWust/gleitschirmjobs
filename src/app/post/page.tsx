@@ -38,7 +38,7 @@ export default function PostPage() {
         <div className="flex justify-between">
           <h1 className="card-title flex-wrap">Neue Anzeige</h1>
         </div>
-        <p className="text-yellow-300 p-4" >Soll die Anzeige immer ganz oben erscheinen? <Link className="link" href="/contact">Kontaktiere uns für ein Angebot</Link> nach dem Absenden der Anzeige.</p>
+        <p className="text-yellow-500 p-4" >Soll die Anzeige immer ganz oben erscheinen? <Link className="link" href="/contact">Kontaktiere uns für ein Angebot</Link> nach dem Absenden der Anzeige.</p>
 
         {status === 'ok' ? (
           <div className="alert alert-success">
@@ -168,13 +168,11 @@ export default function PostPage() {
               />
 
               <div className="p-4">
-                <p className="text-xs text-slate-400">Die E-Mail-Adresse wird nicht veröffentlicht.</p>
-                <p className="text-xs text-slate-400">Bewerbungen werden direkt an die angegebene E-Mail-Adresse gesendet.</p>
+                <p className="text-xs text-slate-500">Die E-Mail-Adresse wird nicht veröffentlicht.</p>
+                <p className="text-xs text-slate-500">Bewerbungen werden direkt an die angegebene E-Mail-Adresse gesendet.</p>
               </div>
 
-              <p>
-                <p className="text-sm">Deine Eingaben werden auf diesem Gerät gespeichert.</p>
-              </p>
+              <p className="text-sm">Deine Eingaben werden auf diesem Gerät gespeichert.</p>
 
               <button className="btn btn-primary mt-4" type="submit" disabled={status === 'pending'}>Senden</button>
               {status === 'error' && (
@@ -183,7 +181,7 @@ export default function PostPage() {
                 </p>
               )}
 
-              <p className="text-xs text-slate-400">Mit dem Absenden der Anzeige erklärst du dich mit unseren <a href="#" className="text-primary">Datenschutzbestimmungen</a> einverstanden.</p>
+              <p className="text-xs text-slate-500">Mit dem Absenden der Anzeige erklärst du dich mit unseren <Link href="/privacy" className="text-primary">Datenschutzbestimmungen</Link> einverstanden.</p>
 
               <p className="pt-4">Die Anzeige wird veröffentlicht, sobald die Email verifiziert und die Anzeige manuell geprüft wurde.</p>
             </div>

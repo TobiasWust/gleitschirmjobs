@@ -22,7 +22,7 @@ export default function JobCard({ job }: { job: ClientJob }) {
   return (
     <article>
       <Link href={`/job/${job.id}/${slugify(job.company)}-${slugify(job.title)}`}>
-        <div className={`card card-compact bg-base-200 w-full shadow-md ${job.highlight ? 'border-solid border-2 border-yellow-300' : ''} hover:shadow-secondary transition-shadow`}>
+        <div className={`card card-compact bg-base-200 w-full shadow-md ${job.highlight ? 'border-solid border-2 border-yellow-500' : ''} hover:shadow-secondary transition-shadow`}>
           <div className="card-body">
             <div className="flex justify-between">
               <h2 className="card-title flex-wrap text-primary">
@@ -35,7 +35,7 @@ export default function JobCard({ job }: { job: ClientJob }) {
             </div>
             <div className="flex gap-4">
               <h3 className="font-semibold text-primary">{job.company}</h3>
-              <span className="text-slate-400">{job.location}</span>
+              <span className="text-slate-500">{job.location}</span>
             </div>
             <div className="line-clamp-2">
               {job.description}
@@ -48,7 +48,7 @@ export default function JobCard({ job }: { job: ClientJob }) {
               </div>
               <div className="card-actions justify-end flex-1">
                 <div className="tooltip tooltip-bottom" data-tip="Wird auf deinem Gerät gemerkt.">
-                  <button className="btn btn-outline" onClick={handleFav}>{favs.includes(job.id) ? <HiStar className="text-yellow-300" /> : <HiOutlineStar />}Merken</button>
+                  <button className="btn btn-outline" onClick={handleFav}>{favs.includes(job.id) ? <HiStar className="text-yellow-500" /> : <HiOutlineStar />}Merken</button>
                 </div>
               </div>
             </div>
