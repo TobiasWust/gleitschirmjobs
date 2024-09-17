@@ -34,19 +34,19 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <MobileFilter>
-          <Header />
-          <Filterbar />
-          <div className="max-w-screen-xl lg:mx-auto p-4 xl:p-0 grid lg:grid-cols-4 gap-4">
-            <div className="col-span-3">
-              {children}
-            </div>
-            <div className="col-span-3 lg:col-span-1">
-              <Sidebar />
-            </div>
+        {/* <MobileFilter> */}
+        <Header />
+        {/* <Filterbar /> */}
+        <div className="max-w-screen-xl lg:mx-auto p-4 xl:p-0 grid lg:grid-cols-4 gap-4">
+          <div className="col-span-3">
+            {children}
           </div>
-          <Footer />
-        </MobileFilter>
+          <div className="col-span-3 lg:col-span-1">
+            <Sidebar />
+          </div>
+        </div>
+        <Footer />
+        {/* </MobileFilter> */}
       </body>
       <GoogleAnalytics gaId="G-E1TYV6R9DM" />
     </html>
