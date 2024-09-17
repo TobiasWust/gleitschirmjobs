@@ -1,6 +1,6 @@
 import { getActiveJobs } from '../utils/supabase/server';
 import { Suspense } from "react";
-import JobTable from "../components/JobTable";
+// import JobTable from "../components/JobTable";
 import SearchBar from "../components/Searchbar";
 
 export default async function Home() {
@@ -10,7 +10,8 @@ export default async function Home() {
     <main>
       <SearchBar />
       <Suspense>
-        <JobTable jobs={jobs || []} />
+        {JSON.stringify(jobs)}
+        {/* <JobTable jobs={jobs || []} /> */}
       </Suspense>
     </main>
   );
