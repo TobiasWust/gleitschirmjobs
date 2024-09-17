@@ -1,23 +1,24 @@
 'use client';
-import { HiBuildingOffice, HiOutlineStar, HiStar, HiUser } from "react-icons/hi2";
+import { HiBuildingOffice, HiUser } from "react-icons/hi2";
+// import { HiBuildingOffice, HiOutlineStar, HiStar, HiUser } from "react-icons/hi2";
 import { useMemo } from "react"
 import { getCategoryNameById } from "../data/categories";
-import { useFav } from "../store/useFav";
+// import { useFav } from "../store/useFav";
 import Link from "next/link";
 import { ClientJob } from "../types/supabaseTypes";
 import slugify from "slugify";
 
 export default function JobCard({ job }: { job: ClientJob }) {
-  const toggleFav = useFav((state) => state.toggleFav);
-  const favs = useFav((state) => state.favs);
+  // const toggleFav = useFav((state) => state.toggleFav);
+  // const favs = useFav((state) => state.favs);
 
   const category = useMemo(() => getCategoryNameById(job.categoryId), [job.categoryId]);
 
-  const handleFav = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    e.preventDefault();
-    toggleFav(job.id);
-  }
+  // const handleFav = (e: React.MouseEvent) => {
+  //   e.stopPropagation();
+  //   e.preventDefault();
+  //   toggleFav(job.id);
+  // }
 
   return (
     <article>
@@ -48,7 +49,7 @@ export default function JobCard({ job }: { job: ClientJob }) {
               </div>
               <div className="card-actions justify-end flex-1">
                 <div className="tooltip tooltip-bottom" data-tip="Wird auf deinem Gerät gemerkt.">
-                  <button className="btn btn-outline" onClick={handleFav}>{favs.includes(job.id) ? <HiStar className="text-yellow-300" /> : <HiOutlineStar />}Merken</button>
+                  {/* <button className="btn btn-outline" onClick={handleFav}>{favs.includes(job.id) ? <HiStar className="text-yellow-300" /> : <HiOutlineStar />}Merken</button> */}
                 </div>
               </div>
             </div>
