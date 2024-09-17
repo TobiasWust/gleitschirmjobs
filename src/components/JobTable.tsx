@@ -91,7 +91,7 @@ export default function JobTable({ jobs }: { jobs: ClientJob[] }) {
       </p>
       <div className="flex gap-4 flex-col">
         {
-          jobs.map((job) =>
+          paginatedJobs.map((job) =>
             <p key={job.id}>{job.title}</p>
             // <JobCard key={job.id} job={job} />
           )
