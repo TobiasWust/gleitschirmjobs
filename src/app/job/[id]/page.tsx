@@ -1,17 +1,7 @@
 import { HiBuildingOffice, HiOutlineArrowTopRightOnSquare, HiUser } from "react-icons/hi2";
 import { getCategoryNameById } from "../../../data/categories";
 import ApplyForm from "../../../components/ApplyForm";
-import { getActiveJobs, getJob } from "../../../utils/supabase/server";
-
-export async function generateStaticParams() {
-  const jobs = await getActiveJobs();
-
-  return jobs?.map((job) => ({
-    params: {
-      id: job.id,
-    },
-  }));
-}
+import { getJob } from "../../../utils/supabase/server";
 
 export default async function Job({ params: { id } }: { params: { id: string } }) {
   const job = await getJob(id);

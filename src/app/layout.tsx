@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { GoogleAnalytics } from '@next/third-parties/google'
 import localFont from "next/font/local";
 import "./globals.css";
 import Footer from "../components/Footer";
@@ -47,6 +48,7 @@ export default function RootLayout({
           <Footer />
         </MobileFilter>
       </body>
+      <GoogleAnalytics gaId="G-E1TYV6R9DM" />
     </html>
   );
 }
