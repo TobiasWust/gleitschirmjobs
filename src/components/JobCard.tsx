@@ -34,7 +34,7 @@ export default function JobCard({ job }: { job: ClientJob }) {
               } */}
               {job.title}<span className="badge badge-xs"></span></h2>
             {/* {job.title}<span className="badge badge-xs">{category}</span></h2> */}
-            {/* <div className="text-xs">{new Date(job.created_at).toLocaleDateString('de')}</div> */}
+            <div className="text-xs">{new Date(job.created_at).toLocaleDateString('de')}</div>
           </div>
           <div className="flex gap-4">
             <h3 className="font-semibold text-primary">{job.company}</h3>
