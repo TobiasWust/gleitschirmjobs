@@ -40,11 +40,17 @@ export default function Privacy() {
           Interessen erforderlich ist; dazu gehören insbesondere unsere Interessen, das Angebot auf unserer Website zu analysieren,
           zu optimieren und abzusichern – darunter fallen vor allem eine Analyse des Nutzerverhaltens, die Erstellung von Profilen
           für Werbezwecke und die Speicherung von Zugriffsdaten sowie der Einsatz von dritten Anbietern.</p>
-        <h2 className="font-bold">Bestandsdaten</h2>
-        <p>Wir erheben Bestandsdaten (zB Name, Anschrift und Mail-Adresse, ggf. in Anspruch genommene Leistungen) soweit sie für
-          die Begründung, inhaltliche Ausgestaltung oder Änderung eines Vertragsverhältnisses zwischen uns und dem Nutzer erforderlich
-          sind.
-        </p>
+        <h2 className="font-bold">Hosting</h2>
+        <p>Diese Website wird bei einem externen Dienstleister gehostet (Hoster). Die personenbezogenen Daten, die auf dieser Website erfasst werden, werden auf den Servern des Hosters gespeichert. Hierbei kann es sich v. a. um IP-Adressen, Kontaktanfragen, Meta- und Kommunikationsdaten, Vertragsdaten, Kontaktdaten, Namen, Websitezugriffe und sonstige Daten, die über eine Website generiert werden, handeln.</p>
+        <p>Der Einsatz des Hosters erfolgt zum Zwecke der Vertragserfüllung gegenüber unseren potenziellen und bestehenden Kunden (Art. 6 Abs. 1 lit. b DSGVO) und im Interesse einer sicheren, schnellen und effizienten Bereitstellung unseres Online-Angebots durch einen professionellen Anbieter (Art. 6 Abs. 1 lit. f DSGVO).</p>
+        <p>Unser Hoster wird Ihre Daten nur insoweit verarbeiten, wie dies zur Erfüllung seiner Leistungspflichten erforderlich ist und unsere Weisungen in Bezug auf diese Daten befolgen.</p>
+        <p>Wir setzen folgende Hoster ein:</p>
+        <p>Statisches Hosting</p>
+        <p>Netlify, Inc., 610 22nd Street, Suite 315, San Francisco, CA 94107, USA</p>
+        <p>Datenbank Hosting</p>
+        <p>Supabase, Inc., 970 Toa Payoh North #07-04, Singapore 318992, support@supabase.io</p>
+        <h2>Auftragsverarbeitung</h2>
+        <p>Wir haben einen Vertrag über Auftragsverarbeitung (AVV) mit Netlify und Supabase geschlossen. Dieser gewährleistet, dass dieser die personenbezogenen Daten unserer Websitebesucher nur nach unseren Weisungen und unter Einhaltung der DSGVO verarbeitet.</p>
         <h2 className="font-bold">Nutzungsdaten</h2>
         <p>Weiter erheben wir Nutzungsdaten (zB Besuche auf der Website, Interesse an Produkten), um die Inanspruchnahme der Dienste
           auf unserer Website durch den Nutzer zu ermöglichen und abzurechnen.</p>
