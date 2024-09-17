@@ -9,18 +9,12 @@ export default function Footer() {
   const theme = themeStore((state) => state.theme);
   const setTheme = themeStore((state) => state.setTheme);
 
-  const handleThemeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setTheme(e.target.checked ? 'myDark' : 'myLight');
+  const handleThemeChange = (e: React.MouseEvent<SVGElement, MouseEvent>) => {
+    setTheme(e.currentTarget.classList.contains('swap-on') ? 'myDark' : 'myLight');
   }
 
   useEffect(() => {
-    if (theme === 'myDark') {
-      document.querySelector('html')?.setAttribute("data-theme", "myDark");
-    } else if (theme === 'myLight') {
-      document.querySelector('html')?.setAttribute("data-theme", "myLight");
-    } else if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-      document.querySelector('html')?.setAttribute("data-theme", "myDark");
-    }
+    document.querySelector('html')?.setAttribute("data-theme", theme);
   }, [theme]);
 
   return (
@@ -46,11 +40,10 @@ export default function Footer() {
             <label className="swap swap-rotate w-12 h-12">
               <input type="checkbox"
                 className="swap-checkbox"
-                onChange={handleThemeChange}
-                checked={theme === 'myDark'}
+                defaultChecked={theme === 'myDark'}
               />
-              <HiMiniSun className="w-8 h-8 swap-on" />
-              <HiMiniMoon className="w-8 h-8 swap-off" />
+              <HiMiniSun onClick={handleThemeChange} className="w-8 h-8 swap-on" />
+              <HiMiniMoon onClick={handleThemeChange} className="w-8 h-8 swap-off" />
             </label>
           </button>
         </p>
