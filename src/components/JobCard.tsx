@@ -1,5 +1,4 @@
 'use client';
-import { HiBuildingOffice, HiUser } from "react-icons/hi2";
 import { HiBuildingOffice, HiOutlineStar, HiStar, HiUser } from "react-icons/hi2";
 import { useMemo } from "react"
 import { getCategoryNameById } from "../data/categories";
@@ -31,26 +30,26 @@ export default function JobCard({ job }: { job: ClientJob }) {
                   <HiBuildingOffice /> :
                   <HiUser />
                 }
-                {job.title}<span className="badge badge-xs"></span></h2>
-              {job.title}<span className="badge badge-xs">{category}</span></h2>
-            {/* <div className="text-xs">{new Date(job.created_at).toLocaleDateString('de')}</div> */}
-          </div>
-          <div className="flex gap-4">
-            <h3 className="font-semibold text-primary">{job.company}</h3>
-            <span className="text-slate-400">{job.location}</span>
-          </div>
-          <div className="line-clamp-2">
-            {job.description}
-          </div>
-          <div className="card-actions justify-between items-center">
-            <div className="card-actions">
-              {
-                job.employmentType?.map((type) => <div className="badge badge-outline" key={type}>{type}</div>)
-              }
+                {job.title}<span className="badge badge-xs">{category}</span></h2>
+              <div className="text-xs" suppressHydrationWarning>{new Date(job.created_at).toLocaleDateString('de')}</div>
             </div>
-            <div className="card-actions justify-end flex-1">
-              <div className="tooltip tooltip-bottom" data-tip="Wird auf deinem Gerät gemerkt.">
-                {/* <button className="btn btn-outline" onClick={handleFav}>{favs.includes(job.id) ? <HiStar className="text-yellow-300" /> : <HiOutlineStar />}Merken</button> */}
+            <div className="flex gap-4">
+              <h3 className="font-semibold text-primary">{job.company}</h3>
+              <span className="text-slate-400">{job.location}</span>
+            </div>
+            <div className="line-clamp-2">
+              {job.description}
+            </div>
+            <div className="card-actions justify-between items-center">
+              <div className="card-actions">
+                {
+                  job.employmentType?.map((type) => <div className="badge badge-outline" key={type}>{type}</div>)
+                }
+              </div>
+              <div className="card-actions justify-end flex-1">
+                <div className="tooltip tooltip-bottom" data-tip="Wird auf deinem Gerät gemerkt.">
+                  <button className="btn btn-outline" onClick={handleFav}>{favs.includes(job.id) ? <HiStar className="text-yellow-300" /> : <HiOutlineStar />}Merken</button>
+                </div>
               </div>
             </div>
           </div>
