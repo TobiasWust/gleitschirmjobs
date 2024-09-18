@@ -60,7 +60,12 @@ export const getJob = cache(async (id: string) => {
     listingType,
     location,
     title
-  `).eq("id", id).single();
+  `)
+    .eq("id", id)
+    .eq('isVerified', true)
+    .eq('isDeleted', false)
+    .eq('isActive', true)
+    .single();
 
   return job;
 });
