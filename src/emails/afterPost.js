@@ -47,7 +47,7 @@ const textTemplate = (result) => `
   Dies ist eine automatisch generierte E-Mail. Solltest du diese E-Mail nicht erwartet haben, ignoriere sie einfach. Deine E-Mail-Adresse wird nicht gespeichert.
 `;
 
-const afterPost = async ({ result }) => mailer.send({
+const afterPost = async ({ result }) => mailer.sendMail({
   from: '"Gleitschirmjobs" <kontakt@gleitschirmjobs.de>',
   to: result.email,
   subject: "Bitte bestätige deine Anzeige auf Gleitschirmjobs",

@@ -27,7 +27,7 @@ const textTemplate = (job, formData) => `
   Dein Team von Gleitschirmjobs
 `;
 
-const afterApply = async ({ job, formData }) => mailer.send({
+const afterApply = async ({ job, formData }) => mailer.sendMail({
   from: '"Gleitschirmjobs" <kontakt@gleitschirmjobs.de>',
   to: job.email,
   replyTo: formData.email,

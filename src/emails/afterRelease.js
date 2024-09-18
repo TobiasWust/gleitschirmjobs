@@ -56,7 +56,7 @@ const textTemplate = (result) => `
 `;
 
 
-const afterRelease = async ({ result }) => mailer.send({
+const afterRelease = async ({ result }) => mailer.sendMail({
   from: '"Gleitschirmjobs" <kontakt@gleitschirmjobs.de>',
   to: result.email,
   subject: "Anzeige auf Gleitschirmjobs veröffentlicht!",
