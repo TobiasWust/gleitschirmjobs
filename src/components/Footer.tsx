@@ -44,6 +44,7 @@ export default function Footer() {
               <input type="checkbox"
                 className="swap-checkbox"
                 checked={theme === 'myDark'}
+                onChange={() => { }}
               />
               <HiMiniSun onClick={handleThemeChange} className="w-8 h-8 swap-on" />
               <HiMiniMoon onClick={handleThemeChange} className="w-8 h-8 swap-off" />
