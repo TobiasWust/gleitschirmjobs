@@ -13,8 +13,6 @@ const config: Config = {
     extend: {
       colors: {
         wuorange: "#f68714",
-        background: "var(--background)",
-        foreground: "var(--foreground)",
       },
     },
   },
@@ -30,6 +28,7 @@ const config: Config = {
           "primary": "#007F73",
           "secondary": "#48eddd",
           "accent": "#FFC700",
+          "base-100": "#f8f8f8",
         },
       },
       {
