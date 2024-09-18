@@ -1,9 +1,9 @@
 'use client';
 import Link from "next/link";
-import { useEffect } from "react";
 import { GiHearts } from "react-icons/gi";
 import { HiMiniMoon, HiMiniSun } from "react-icons/hi2";
 import themeStore from "../store/themeStore";
+import { useEffect } from "react";
 
 export default function Footer() {
   const theme = themeStore((state) => state.theme);
@@ -14,8 +14,11 @@ export default function Footer() {
   }
 
   useEffect(() => {
-    document.querySelector('html')?.setAttribute("data-theme", theme);
-  }, [theme]);
+    const activeTheme = theme;
+    const defaultTheme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'myDark' : 'myLight';
+
+    document.querySelector('html')?.setAttribute("data-theme", activeTheme || defaultTheme);
+  }, [theme, setTheme]);
 
   return (
     <>
@@ -40,7 +43,7 @@ export default function Footer() {
             <label className="swap swap-rotate w-12 h-12">
               <input type="checkbox"
                 className="swap-checkbox"
-                defaultChecked={theme === 'myDark'}
+                checked={theme === 'myDark'}
               />
               <HiMiniSun onClick={handleThemeChange} className="w-8 h-8 swap-on" />
               <HiMiniMoon onClick={handleThemeChange} className="w-8 h-8 swap-off" />
