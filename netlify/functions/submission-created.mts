@@ -74,7 +74,7 @@ const handleReq = async (req: Request) => {
       return new Response("Error", { status: 500 });
     }
 
-    const mailRes = await afterApply({ job: result, formData });
+    const mailRes = await afterApply({ job: await result, formData });
 
     logger.info({ mailRes });
 
