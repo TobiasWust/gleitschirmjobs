@@ -12,6 +12,9 @@ const template = (job, formData) => `
   </ul>
 
   <p>Mit besten Grüßen,<br>Dein Team von Gleitschirmjobs</p>
+  <br>
+  <p>Diese Anzeige ist nicht mehr akutell?<br>
+  <a href="https://gleitschirmjobs.de/delete/${result.uuid}">Anzeige löschen</a></p>
 `;
 
 const textTemplate = (job, formData) => `
@@ -25,6 +28,9 @@ const textTemplate = (job, formData) => `
   
   Mit besten Grüßen,
   Dein Team von Gleitschirmjobs
+
+  Diese Anzeige ist nicht mehr akutell?
+  Anzeige löschen: https://gleitschirmjobs.de/delete/${job.uuid}
 `;
 
 const afterApply = async ({ job, formData }) => mailer.sendMail({
