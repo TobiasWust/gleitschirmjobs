@@ -181,6 +181,27 @@ export default function Privacy() {
           personenbezogenen Daten zu widerrufen. Dies kann durch eine formlose Mitteilung erfolgen, zB über unser Kontaktformular,
           eine Mail an die im Impressum angegebene Mail-Adresse oder einen Abmeldelink (soweit von uns angeboten). Ihr Widerruf
           berührt die Rechtmäßigkeit der bis dahin vorgenommenen Datenverarbeitung nicht.</p> */}
+        <h2 className="font-bold">Mailjet</h2>
+        <p>Wir nutzen Mailjet für den Versand von Emails. Anbieter ist die Mailjet SAS, 13-13 bis, Rue de l'Aubrac – 75012 Paris, Frankreich. Mailjet ist ein Dienst, mit dem der Newsletterversand organisiert und analysiert werden kann. Die von Ihnen zwecks Newsletterbezug eingegebenen Daten werden auf den Servern von Mailjet in der EU gespeichert.</p>
+
+        <p>Unsere mit Mailjet versandten Newsletter ermöglichen uns die Analyse des Verhaltens der Newsletterempfänger. Hierbei kann u. a. analysiert werden, wie viele Empfänger die Newsletternachricht geöffnet haben und wie oft welcher Link im Newsletter angeklickt wurde. Mit Hilfe des sogenannten Conversion-Trackings kann außerdem analysiert werden, ob nach Anklicken des Links im Newsletter eine vorab definierte Aktion (z.B. Kauf eines Produkts auf unserer Website) erfolgt ist. Weitere Informationen zur Datenanalyse durch Mailjet-Newsletter erhalten Sie unter: mailjet.de/funktion/tracking-tools.</p>
+
+        <p>Mailjet ermöglicht uns auch, die Newsletter-Empfänger anhand verschiedener Kategorien zu unterteilen ("Segmentierung"). Dabei lassen sich die Newsletter-Empfänger nach den bei der Anmeldung angegebenen Daten unterteilen. Auf diese Weise lassen sich die Newsletter besser an die jeweiligen Zielgruppen anpassen.</p>
+
+        <p>Ausführliche Informationen zu den Funktionen von Mailjet entnehmen Sie bitte folgendem Link: mailjet.de/funktion.</p>
+
+        <p>Die Datenverarbeitung erfolgt auf Grundlage Ihrer Einwilligung (Art. 6 Abs. 1 lit. a DSGVO). Sie können diese Einwilligung jederzeit widerrufen, indem Sie den Newsletter abbestellen. Die Rechtmäßigkeit der bereits erfolgten Datenverarbeitungsvorgänge bleibt vom Widerruf unberührt.</p>
+
+        <p>Wenn Sie keine Analyse durch Mailjet wollen, müssen Sie den Newsletter abbestellen. Hierfür stellen wir in jeder Newsletternachricht einen entsprechenden Link zur Verfügung.</p>
+
+        <p>Die von Ihnen zum Zwecke des Newsletter-Bezugs bei uns hinterlegten Daten werden von uns bis zu Ihrer Austragung aus dem Newsletter gespeichert und nach der Abbestellung des Newsletters sowohl von unseren Servern als auch von den Servern von Mailjet gelöscht. Daten, die zu anderen Zwecken bei uns gespeichert wurden (z.B. E-Mail-Adressen für den Mitgliederbereich) bleiben hiervon unberührt.</p>
+
+        <p>Näheres entnehmen Sie den Informationen zu "Sicherheit und Datenschutz" von Mailjet unter mailjet.de/sicherheit-datenschutz und den Datenschutzbestimmungen von Mailjet unter mailjet.de/privacy-policy.</p>
+
+        <p>Abschluss eines Data-Processing-Agreements
+          Wir haben mit Mailjet einen Vertrag zur Auftragsdatenverarbeitung abgeschlossen und setzen die strengen Vorgaben der deutschen Datenschutzbehörden bei der Nutzung von Mailjet vollständig um.</p>
+
+
         <h2 className="font-bold">Speicherdauer</h2>
         <p>Ihre Daten bleiben grundsätzlich nur so lange gespeichert, wie es der Zweck der jeweiligen Datenverarbeitung erfordert.
           Eine weitergehende Speicherung kommt vor allem in Betracht, wenn dies zur Rechtsverfolgung durch uns oder aus unseren
