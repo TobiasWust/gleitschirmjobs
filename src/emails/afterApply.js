@@ -14,7 +14,7 @@ const template = (job, formData) => `
   <p>Mit besten Grüßen,<br>Dein Team von Gleitschirmjobs</p>
   <br>
   <p>Diese Anzeige ist nicht mehr akutell?<br>
-  <a href="https://gleitschirmjobs.de/delete/${result.uuid}">Anzeige löschen</a></p>
+  <a href="https://gleitschirmjobs.de/delete/${job.uuid}">Anzeige löschen</a></p>
 `;
 
 const textTemplate = (job, formData) => `
