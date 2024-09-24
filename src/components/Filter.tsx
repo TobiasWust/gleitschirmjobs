@@ -22,6 +22,15 @@ export default function Filter({ mobileView = false }: Readonly<{ mobileView?: b
   const isActiveCategory = (category: string) => category === activeCategory;
   const isActiveListingType = (listingType: string) => listingType === activeListingType;
 
+  const handleLinkClick = useCallback(
+    (e: React.MouseEvent<HTMLAnchorElement>) => {
+      e.preventDefault()
+      // replace history
+      window.history.replaceState({}, '', e.currentTarget.href)
+    },
+    []
+  )
+
   const createQueryString = useCallback(
     (name: string, value: string) => {
       const params = new URLSearchParams(searchParams.toString())
@@ -45,7 +54,7 @@ export default function Filter({ mobileView = false }: Readonly<{ mobileView?: b
     <div className={`${mobileView ? 'flex flex-row md:hidden' : 'md:flex hidden'} gap-2 flex-wrap`}>
       <ul className="menu menu-sm w-full md:w-auto md:menu-horizontal bg-base-300 rounded">
         <li>
-          <Link className={`tooltip tooltip-right md:tooltip-bottom ${!activeCategory && activePathname === pathname ? 'active' : ''}`} href={pathname + '?' + removeQueryString('category')}
+          <Link className={`tooltip tooltip-right md:tooltip-bottom ${!activeCategory && activePathname === pathname ? 'active' : ''}`} href={pathname + '?' + removeQueryString('category')} onClick={handleLinkClick}
           >Alle</Link>
         </li>
         {categories.map((category) => (
@@ -53,6 +62,7 @@ export default function Filter({ mobileView = false }: Readonly<{ mobileView?: b
             <Link className={`tooltip tooltip-right md:tooltip-bottom ${isActiveCategory(category.name) ? 'active' : ''}`} data-tip={category.description} href={
               pathname + '?' + createQueryString('category', category.name)
             }
+              onClick={handleLinkClick}
             >{category.name}</Link>
           </li>
         ))}
@@ -61,14 +71,17 @@ export default function Filter({ mobileView = false }: Readonly<{ mobileView?: b
       <ul className="menu menu-sm w-full md:w-auto md:menu-horizontal bg-base-300 rounded">
         <li>
           <Link className={`tooltip tooltip-bottom ${!activeListingType && activePathname === pathname ? 'active' : ''}`} href={pathname + '?' + removeQueryString('listingType')}
+            onClick={handleLinkClick}
           >Alle</Link>
         </li>
         <li>
           <Link className={`tooltip tooltip-bottom ${isActiveListingType('search') ? 'active' : ''}`} href={pathname + '?' + createQueryString('listingType', 'search')}
+            onClick={handleLinkClick}
           ><HiBuildingOffice className="inline-block" /> Arbeitgebende</Link>
         </li>
         <li>
           <Link className={`tooltip tooltip-bottom ${isActiveListingType('offer') ? 'active' : ''}`} href={pathname + '?' + createQueryString('listingType', 'offer')}
+            onClick={handleLinkClick}
           ><HiUser className="inline-block" /> Arbeitende</Link>
         </li>
       </ul>
