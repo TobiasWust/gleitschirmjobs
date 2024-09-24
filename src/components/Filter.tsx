@@ -24,11 +24,12 @@ export default function Filter({ mobileView = false }: Readonly<{ mobileView?: b
 
   const handleLinkClick = useCallback(
     (e: React.MouseEvent<HTMLAnchorElement>) => {
+      if (activePathname !== pathname) return;
       e.preventDefault()
       // replace history
       window.history.replaceState({}, '', e.currentTarget.href)
     },
-    []
+    [activePathname]
   )
 
   const createQueryString = useCallback(
