@@ -4,6 +4,7 @@ import { createClient } from "@supabase/supabase-js";
 import pino from "pino";
 import afterPost from "../../src/emails/afterPost";
 import afterApply from "../../src/emails/afterApply";
+import afterApplySender from "../../src/emails/afterApply_Sender";
 
 const logger = pino();
 
@@ -75,8 +76,10 @@ const handleReq = async (req: Request) => {
     }
 
     const mailRes = await afterApply({ job: await result, formData });
+    const mailResSender = await afterApplySender({ job: await result, formData });
 
     logger.info({ mailRes });
+    logger.info({ mailResSender });
 
   }
   return new Response("OK", { status: 200 });

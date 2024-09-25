@@ -46,7 +46,7 @@ export default function ApplyForm({ jobId, company }: { jobId: number, company: 
         <p className="text-sm">Deine Eingaben werden auf diesem Gerät gespeichert.</p>
         <div className="flex justify-end items-center gap-4 pt-4">
           <p className="text-sm">
-            Diese Nachricht wird direkt an {company} gesendet.
+            Diese Nachricht wird direkt an {company} gesendet.<br />Du erhältst eine Kopie dieser Nachricht an deine Email-Adresse.
           </p>
           <button type="submit" className="btn btn-primary">Senden</button>
         </div>
