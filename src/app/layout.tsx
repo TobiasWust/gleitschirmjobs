@@ -6,7 +6,6 @@ import Filterbar from "../components/Filterbar";
 import Sidebar from "../components/Sidebar";
 import Header from "../components/Header";
 import MobileFilter from "../components/MobileFilter";
-import BetaNotice from "../components/BetaNotice";
 
 export const metadata: Metadata = {
   title: "Gleitschirmjobs - Die Jobbörse für Gleitschirmfliegende.",
@@ -25,7 +24,6 @@ export default function RootLayout({
       >
         <MobileFilter>
           <Header />
-          <BetaNotice />
           <Filterbar />
           <div className="max-w-screen-xl lg:mx-auto p-4 xl:p-0 grid lg:grid-cols-4 gap-4">
             <div className="col-span-3">
