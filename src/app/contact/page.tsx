@@ -14,7 +14,7 @@ export default function ContactPage() {
         <p>
           Du hast Fragen, Anregungen oder möchtest uns einfach nur Feedback geben? Dann schreib uns eine Nachricht. Wir freuen uns auf deine Nachricht!
         </p>
-        <p>Bei den Folgnden Themen Hilft dir unser Team gerne weiter:</p>
+        <p>Bei den folgnden Themen hilft dir unser Team gerne weiter:</p>
         <ul className="list-disc list-inside">
           <li>&quot;Highlight&quot;-Anzeigen, die immer ganz oben erscheinen</li>
           <li>Werbung auf unserer Website</li>
