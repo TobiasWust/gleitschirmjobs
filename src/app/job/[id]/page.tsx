@@ -42,7 +42,7 @@ export default async function Job({ params: { id } }: { params: { id: string } }
           </div>
           {job.jobUrl && <a className="text-primary flex items-center gap-1" href={job.jobUrl} target="_blank" rel="noreferrer">Ausschreibung auf externer Seite <HiOutlineArrowTopRightOnSquare /></a>}
         </div>
-        <ApplyForm jobId={job.id} company={job.company} />
+        <ApplyForm jobId={job.id} company={job.company} isDemo={job.title.includes("Demo")} />
       </div>
     </main>
   )

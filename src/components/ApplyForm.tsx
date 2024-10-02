@@ -3,7 +3,12 @@
 import useFormSubmit from "../hooks/useFormSubmit";
 import applyStore from "../store/applyStore";
 
-export default function ApplyForm({ jobId, company }: { jobId: number, company: string }) {
+export default function ApplyForm({ jobId, company, isDemo = false }:
+  {
+    jobId: number,
+    company: string
+    isDemo: boolean
+  }) {
   const { handleFormSubmit, error, status } = useFormSubmit();
   const name = applyStore((state) => state.name);
   const email = applyStore((state) => state.email);
@@ -19,6 +24,12 @@ export default function ApplyForm({ jobId, company }: { jobId: number, company: 
       </div>
     ) : (
       <form onSubmit={handleFormSubmit} name="apply" method="POST" netlify-honeypot="bot-field" data-netlify="true">
+        {isDemo && (
+          <div className="alert alert-warning">
+            Dies ist eine Demo-Anzeige. Es ist nicht möglich, sich auf diese Anzeige zu bewerben.
+          </div>
+        )
+        }
         <input type="hidden" name="form-name" value="apply" />
         <input type="hidden" name="jobId" value={jobId} />
         <label className="form-control w-full">
@@ -48,7 +59,7 @@ export default function ApplyForm({ jobId, company }: { jobId: number, company: 
           <p className="text-sm">
             Diese Nachricht wird direkt an {company} gesendet.<br />Du erhältst eine Kopie dieser Nachricht an deine Email-Adresse.
           </p>
-          <button type="submit" className="btn btn-primary">Senden</button>
+          <button type="submit" className="btn btn-primary" disabled={isDemo} >Senden</button>
         </div>
         {status === 'error' && (
           <p>
