@@ -3,7 +3,7 @@ import { HiBuildingOffice, HiUser } from "react-icons/hi2";
 import categories from "../../data/categories";
 import Link from "next/link";
 import useFormSubmit from "../../hooks/useFormSubmit";
-import postStore from "../../utils/postStore";
+import postStore from "../../store/postStore";
 
 export default function PostPage() {
   const { handleFormSubmit, error, status } = useFormSubmit();
