@@ -1,29 +1,26 @@
 'use client';
 import JobCard from "./JobCard";
-import { useSearchParams } from 'next/navigation'
+import { usePathname, useSearchParams } from 'next/navigation'
 import { getCategoryNameById } from "../data/categories";
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import { useSearchFilter } from "../store/useSearchFilter";
 import { useFav } from "../store/useFav";
 import { ClientJob } from "../types/supabaseTypes";
+import { createQueryString } from "../utils/queryStrings";
 
 const itemsPerPage = 10;
 
 export default function JobTable({ jobs }: { jobs: ClientJob[] }) {
   const searchParams = useSearchParams()
+  const pathname = usePathname()
   const category = searchParams.get('category')
   const listingType = searchParams.get('listingType')
+  const page = searchParams.get('page') ? parseInt(searchParams.get('page') as string) : 1;
 
   const favs = useFav((state) => state.favs);
   const cleanUpFavs = useFav((state) => state.cleanUpFavs);
   const searchText = useSearchFilter((state) => state.searchText);
   const onlyFavs = useSearchFilter((state) => state.onlyFavs);
-
-  const [page, setPage] = useState(1);
-
-  const handlePage = (page: number) => {
-    setPage(page);
-  }
 
   useEffect(() => {
     cleanUpFavs(jobs.map((job) => job.id));
@@ -81,6 +78,20 @@ export default function JobTable({ jobs }: { jobs: ClientJob[] }) {
   }, [filteredJobs, page]);
 
   const pageCount = Math.ceil(filteredJobs.length / itemsPerPage);
+
+  const handlePage = useCallback((newPage: number) => {
+    const url = pathname + '?' + createQueryString(searchParams, 'page', String(newPage));
+    window.history.replaceState({}, '', url)
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }, [pathname, searchParams]);
+
+  // effect if filteredJobs.length changes check if there are still results on current page or go to last page
+  useEffect(() => {
+    const newPageCount = Math.ceil(filteredJobs.length / itemsPerPage);
+    if (newPageCount < page) {
+      handlePage(newPageCount);
+    }
+  }, [filteredJobs.length, page, handlePage]);
 
   return (
     <div>
