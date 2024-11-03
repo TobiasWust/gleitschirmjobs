@@ -85,9 +85,9 @@ export default function JobTable({ jobs }: { jobs: ClientJob[] }) {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }, [pathname, searchParams]);
 
-  // effect if filteredJobs.length changes check if there are still results on current page or go to last page
+  // effect if filteredJobs.length changes check if there are still results on current page or go to last page but at least 1
   useEffect(() => {
-    const newPageCount = Math.ceil(filteredJobs.length / itemsPerPage);
+    const newPageCount = Math.ceil(filteredJobs.length / itemsPerPage) || 1;
     if (newPageCount < page) {
       handlePage(newPageCount);
     }
